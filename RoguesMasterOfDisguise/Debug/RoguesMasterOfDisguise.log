@@ -1,0 +1,47 @@
+﻿Build started 2-10-2014 16:13:36.
+Project "c:\Users\bas ter bogt\documents\visual studio 2013\Projects\RoguesMasterOfDisguise\RoguesMasterOfDisguise\RoguesMasterOfDisguise.vcxproj" on node 2 (Build target(s)).
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Debug\RoguesMasterOfDisguise.pch" /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Bat.cpp ChoiceState.cpp CombatState.cpp Controller.cpp Enemy.cpp Equipment.cpp GameLoop.cpp GameState.cpp Hero.cpp InitiateState.cpp LevelManager.cpp Map.cpp RandomValue.cpp Rat.cpp RoguesMasterOfDisguise.cpp Room.cpp
+  Room.cpp
+  RoguesMasterOfDisguise.cpp
+  Rat.cpp
+  RandomValue.cpp
+c:\users\bas ter bogt\documents\visual studio 2013\projects\roguesmasterofdisguise\roguesmasterofdisguise\randomvalue.cpp(14): warning C4244: 'argument' : conversion from 'time_t' to 'unsigned int', possible loss of data
+  Map.cpp
+  LevelManager.cpp
+  InitiateState.cpp
+c:\users\bas ter bogt\documents\visual studio 2013\projects\roguesmasterofdisguise\roguesmasterofdisguise\initiatestate.cpp(17): warning C4129: 'H' : unrecognized character escape sequence
+  Hero.cpp
+  GameState.cpp
+  GameLoop.cpp
+  Equipment.cpp
+  Enemy.cpp
+  Controller.cpp
+  CombatState.cpp
+  ChoiceState.cpp
+  Bat.cpp
+  Generating Code...
+Link:
+  C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"c:\users\bas ter bogt\documents\visual studio 2013\Projects\RoguesMasterOfDisguise\Debug\RoguesMasterOfDisguise.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"c:\users\bas ter bogt\documents\visual studio 2013\Projects\RoguesMasterOfDisguise\Debug\RoguesMasterOfDisguise.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"c:\users\bas ter bogt\documents\visual studio 2013\Projects\RoguesMasterOfDisguise\Debug\RoguesMasterOfDisguise.lib" /MACHINE:X86 Debug\Bat.obj
+  Debug\ChoiceState.obj
+  Debug\CombatState.obj
+  Debug\Controller.obj
+  Debug\Enemy.obj
+  Debug\Equipment.obj
+  Debug\GameLoop.obj
+  Debug\GameState.obj
+  Debug\Hero.obj
+  Debug\InitiateState.obj
+  Debug\LevelManager.obj
+  Debug\Map.obj
+  Debug\RandomValue.obj
+  Debug\Rat.obj
+  Debug\RoguesMasterOfDisguise.obj
+  Debug\Room.obj
+  Debug\stdafx.obj
+  RoguesMasterOfDisguise.vcxproj -> c:\users\bas ter bogt\documents\visual studio 2013\Projects\RoguesMasterOfDisguise\Debug\RoguesMasterOfDisguise.exe
+Done Building Project "c:\Users\bas ter bogt\documents\visual studio 2013\Projects\RoguesMasterOfDisguise\RoguesMasterOfDisguise\RoguesMasterOfDisguise.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:16.45

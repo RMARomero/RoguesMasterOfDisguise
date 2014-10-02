@@ -1,0 +1,11 @@
+#pragma once
+#include "GameState.h"
+
+class CombatState: public GameState
+{
+public:
+	CombatState(Hero *player, LevelManager *lvlManager, Controller* controller);
+	std::string processInput(std::string input);
+	~CombatState();
+};
+
