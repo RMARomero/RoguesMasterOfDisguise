@@ -84,7 +84,7 @@
     <ClInclude Include="CombatState.h" />
     <ClInclude Include="Controller.h" />
     <ClInclude Include="Enemy.h" />
-    <ClInclude Include="Equipment.h" />
+    <ClInclude Include="Item.h" />
     <ClInclude Include="GameLoop.h" />
     <ClInclude Include="GameState.h" />
     <ClInclude Include="Hero.h" />
@@ -103,7 +103,7 @@
     <ClCompile Include="CombatState.cpp" />
     <ClCompile Include="Controller.cpp" />
     <ClCompile Include="Enemy.cpp" />
-    <ClCompile Include="Equipment.cpp" />
+    <ClCompile Include="Item.cpp" />
     <ClCompile Include="GameLoop.cpp" />
     <ClCompile Include="GameState.cpp" />
     <ClCompile Include="Hero.cpp" />
