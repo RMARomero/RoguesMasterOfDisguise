@@ -2,11 +2,11 @@
 #include "Item.h"
 
 
-Item::Equipment()
+Item::Item()
 {
 }
 
 
-Item::~Equipment()
+Item::~Item()
 {
 }

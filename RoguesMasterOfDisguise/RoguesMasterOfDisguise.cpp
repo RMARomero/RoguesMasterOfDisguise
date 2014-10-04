@@ -3,6 +3,7 @@
 
 #include "stdafx.h"
 #include "GameLoop.h"
+#include "ReadTextFile.h"
 #include <iostream>
 
 using namespace std;

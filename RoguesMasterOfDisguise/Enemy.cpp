@@ -4,8 +4,13 @@
 using namespace std;
 
 
-Enemy::Enemy(){
-
+Enemy::Enemy(string name, int level){
+	_name = name;
+	_level = level;
+	_maxHealth = level;
+	_currentHealth = _maxHealth;
+	_attack = level * 1;
+	_defense = level * 1;
 }
 Enemy::~Enemy(){
 

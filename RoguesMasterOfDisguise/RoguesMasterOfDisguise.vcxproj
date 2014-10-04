@@ -76,10 +76,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <Text Include="RandomEnemyValues.txt" />
+    <Text Include="RandomRoomValues.txt" />
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Bat.h" />
     <ClInclude Include="ChoiceState.h" />
     <ClInclude Include="CombatState.h" />
     <ClInclude Include="Controller.h" />
@@ -92,13 +93,12 @@
     <ClInclude Include="LevelManager.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="RandomValue.h" />
-    <ClInclude Include="Rat.h" />
+    <ClInclude Include="ReadTextFile.h" />
     <ClInclude Include="Room.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Bat.cpp" />
     <ClCompile Include="ChoiceState.cpp" />
     <ClCompile Include="CombatState.cpp" />
     <ClCompile Include="Controller.cpp" />
@@ -111,7 +111,7 @@
     <ClCompile Include="LevelManager.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="RandomValue.cpp" />
-    <ClCompile Include="Rat.cpp" />
+    <ClCompile Include="ReadTextFile.cpp" />
     <ClCompile Include="RoguesMasterOfDisguise.cpp" />
     <ClCompile Include="Room.cpp" />
     <ClCompile Include="stdafx.cpp">

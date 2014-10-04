@@ -1,5 +1,4 @@
 #pragma once
-#include <string>
 
 class Enemy
 {
@@ -11,13 +10,13 @@ protected:
 	int _attack;
 	int _defense;
 public:
-	Enemy();
-	virtual std::string GetName();
-	virtual int GetLevel();
-	virtual std::string GetEnemyInfo();
-	virtual std::string GetBattleStatus();
-	virtual int getCurrentAttack();
-	virtual void DoDamage(int attack);
-	virtual ~Enemy();
+	Enemy(std::string name, int level);
+	std::string GetName();
+	int GetLevel();
+	std::string GetEnemyInfo();
+	std::string GetBattleStatus();
+	int getCurrentAttack();
+	void DoDamage(int attack);
+	~Enemy();
 };
 
