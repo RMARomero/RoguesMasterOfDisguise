@@ -1,5 +1,4 @@
 #pragma once
-#include <string>
 #include "Controller.h"
 
 class GameLoop

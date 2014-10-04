@@ -2,7 +2,6 @@
 #include <vector>
 #include "Room.h"
 #include "RandomValue.h"
-#include <vector>
 
 const int matrixWidth = 20;
 const int matrixHeight = 10;

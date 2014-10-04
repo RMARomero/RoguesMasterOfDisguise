@@ -19,9 +19,6 @@
     <Filter Include="Header Files\Entity">
       <UniqueIdentifier>{0e24ee02-21ee-4212-94d6-686ae4ac2e6d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Entity\Enemy">
-      <UniqueIdentifier>{344a351b-7fe8-44c2-b59e-092c7eb71f44}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\Entity\Item">
       <UniqueIdentifier>{09edd6fe-2d25-4ef6-919f-453b92807a66}</UniqueIdentifier>
     </Filter>
@@ -52,12 +49,15 @@
     <Filter Include="Source Files\Tools">
       <UniqueIdentifier>{400f4233-d668-4b72-a72f-75f73b003155}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Entity\Enemy">
-      <UniqueIdentifier>{dc4e34bb-5548-4d9d-8003-6e68aa46b39c}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
+    <Text Include="RandomEnemyValues.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="RandomRoomValues.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -77,12 +77,6 @@
     </ClInclude>
     <ClInclude Include="CombatState.h">
       <Filter>Header Files\GameState</Filter>
-    </ClInclude>
-    <ClInclude Include="Bat.h">
-      <Filter>Header Files\Entity\Enemy</Filter>
-    </ClInclude>
-    <ClInclude Include="Enemy.h">
-      <Filter>Header Files\Entity\Enemy</Filter>
     </ClInclude>
     <ClInclude Include="Item.h">
       <Filter>Header Files\Entity\Item</Filter>
@@ -108,8 +102,11 @@
     <ClInclude Include="RandomValue.h">
       <Filter>Header Files\Tools</Filter>
     </ClInclude>
-    <ClInclude Include="Rat.h">
-      <Filter>Header Files\Entity\Enemy</Filter>
+    <ClInclude Include="Enemy.h">
+      <Filter>Header Files\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="ReadTextFile.h">
+      <Filter>Header Files\Tools</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -119,9 +116,6 @@
     <ClCompile Include="RoguesMasterOfDisguise.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Bat.cpp">
-      <Filter>Source Files\Entity\Enemy</Filter>
-    </ClCompile>
     <ClCompile Include="ChoiceState.cpp">
       <Filter>Source Files\GameState</Filter>
     </ClCompile>
@@ -130,9 +124,6 @@
     </ClCompile>
     <ClCompile Include="Controller.cpp">
       <Filter>Source Files\Controller</Filter>
-    </ClCompile>
-    <ClCompile Include="Enemy.cpp">
-      <Filter>Source Files\Entity\Enemy</Filter>
     </ClCompile>
     <ClCompile Include="Item.cpp">
       <Filter>Source Files\Entity\Item</Filter>
@@ -158,10 +149,13 @@
     <ClCompile Include="Room.cpp">
       <Filter>Source Files\Level</Filter>
     </ClCompile>
-    <ClCompile Include="Rat.cpp">
-      <Filter>Source Files\Entity\Enemy</Filter>
-    </ClCompile>
     <ClCompile Include="RandomValue.cpp">
+      <Filter>Source Files\Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>Source Files\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="ReadTextFile.cpp">
       <Filter>Source Files\Tools</Filter>
     </ClCompile>
   </ItemGroup>
