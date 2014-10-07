@@ -165,6 +165,7 @@ Room::getChoiceInformation(){
 
 	result += "map, ";
 	result += "inventory, ";
+	result += "stats, ";
 
 	if (getStairsUp() || getStairsDown()){
 		result += "stairs, ";
@@ -206,11 +207,16 @@ Room::spawnEnemies(){
 	}
 
 	for (int i = 0; i < amountOfEnemies; i++){
-		_enemies.push_back(new Enemy("rat", _room_level));
+		//_enemies.push_back(new Enemy("rat", _room_level));
+		_enemies.push_back(ReadTextFile::getInstance()->getRandomEnemy(_room_level));
 	}
 
 }
 
+
+std::vector<Enemy*>* Room::getEnemies(){
+	return &_enemies;
+}
 
 
 void 
@@ -278,6 +284,11 @@ Room::getMoveChoices(){
 	}
 	result += "}";
 	return result;
+}
+
+
+std::string Room::getAttackChoices(){
+	return "{attack, flee, inventory, stats}";
 }
 
 void 

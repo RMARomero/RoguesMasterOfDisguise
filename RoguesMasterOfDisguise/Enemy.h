@@ -9,14 +9,18 @@ protected:
 	int _currentHealth;
 	int _attack;
 	int _defense;
+	int _experienceOnKill;
 public:
-	Enemy(std::string name, int level);
+	Enemy(std::string name, int level, int healthPerLevel, int attackPerLevel, int defensePerLevel, int experienceOnKill);
 	std::string GetName();
 	int GetLevel();
 	std::string GetEnemyInfo();
 	std::string GetBattleStatus();
 	int getCurrentAttack();
-	void DoDamage(int attack);
+	int DoDamage(int attack);
+	int GetExperienceOnKill();
+	bool IsAlive();
+	Enemy* Clone(int level);
 	~Enemy();
 };
 

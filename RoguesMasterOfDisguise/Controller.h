@@ -15,6 +15,7 @@ public:
 	Controller();
 	std::string getInput(std::string input);
 	void setCurrentGameState(int GameState);
+	//GameState* getCurrentGameState();
 	~Controller();
 
 	const int INITIATE_STATE = 0;
