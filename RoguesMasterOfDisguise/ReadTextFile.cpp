@@ -8,7 +8,8 @@ ReadTextFile* ReadTextFile::_instance = nullptr;
 
 ReadTextFile::ReadTextFile()
 {
-	_random = RandomValue::getInstance();
+	fillRoomVectors();
+	fillEnemyVector();
 }
 
 ReadTextFile*
@@ -26,7 +27,6 @@ ReadTextFile::~ReadTextFile()
 
 void ReadTextFile::fillRoomVectors(){
 	const string randomRoomValues("RandomRoomValues.txt");
-	const string randomEnemyValues("RandomEnemyValues.txt");
 
 	ifstream input_file(randomRoomValues); // stack-based file object; deze constructie opent de file voor lezen
 	string line;
@@ -54,7 +54,23 @@ void ReadTextFile::fillRoomVectors(){
 	}
 }
 
-void ReadTextFile::fillEnemyVectors(){
+void ReadTextFile::fillEnemyVector(){
+	const string randomEnemyValues("RandomEnemyValues.txt");
+	// variabelen waarin de ingelezen waarden terecht komen
+	string line;
+	string name = "";
+	int healthPerLevel = 0;
+	int attackPerLevel = 0;
+	int defensePerLevel = 0;
+	int experienceOnKill = 0;
+	// input file stream, opent textfile voor lezen
+	ifstream input_file(randomEnemyValues);
+
+	while (input_file >> name >> healthPerLevel >> attackPerLevel >> defensePerLevel >> experienceOnKill) {
+		string result = name + to_string(healthPerLevel) + to_string(attackPerLevel) + to_string(defensePerLevel) + to_string(experienceOnKill);
+		UniqueEnemies.push_back(new Enemy(name, 1, healthPerLevel, attackPerLevel, defensePerLevel, experienceOnKill));
+	}
+	//Enemy* enemy = ;
 
 }
 
@@ -74,6 +90,7 @@ string ReadTextFile::getRandomRoomValue(){
 
 	return roomSize + " " + roomCondition + " " + roomDecoration + " " + roomLightning;
 }
-string ReadTextFile::getRandomEnemyValues(){
-	return "";
+Enemy* ReadTextFile::getRandomEnemy(int level){
+	int chance = _random->getRandom(0, UniqueEnemies.size());
+	return UniqueEnemies.at(chance)->Clone(level);
 }

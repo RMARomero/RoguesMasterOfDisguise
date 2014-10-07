@@ -30,7 +30,7 @@ InitiateState::processInput(string input){
 	}
 	else if (_current_step == 2){
 		if (input == "leave"){
-			result = "exit";
+			result = "___exit___";
 		}
 		else if (input == "enter"){
 			result = "enter";

@@ -22,10 +22,17 @@ GameLoop::getInput()
 	string input = "";
 	getline(cin, input);
 	string result = _controller->getInput(input);
-	if (result == "exit"){
+
+	const std::string ext("___exit___");
+	if (result.size() >= ext.size() &&
+		result.substr(result.size() - ext.size()) == "___exit___")
+	{
+		result = result.substr(0, result.size() - ext.size());
 		_playing = false;
-		result = "--------------------------\nAnd so the journey ends...\n--------------------------\n\n";
+		result += "\n\n--------------------------\nAnd so the journey ends...\n--------------------------\n\n";
 	}
+
+	
 	return result;
 }
 

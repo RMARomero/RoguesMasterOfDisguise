@@ -43,6 +43,10 @@ Controller::setCurrentGameState(int GameState){
 	}
 }
 
+//GameState* Controller::getCurrentGameState(){
+//	return _currentGameState;
+//}
+
 Controller::~Controller()
 {
 	delete _hero;
