@@ -2,11 +2,21 @@
 #include "Item.h"
 
 
-Item::Equipment()
+Item::Item()
 {
 }
 
 
-Item::~Equipment()
+Item::~Item()
 {
+}
+
+std::string Item::getName()
+{
+	return m_Name;
+}
+
+std::string Item::getDescription()
+{
+	return m_Description;
 }

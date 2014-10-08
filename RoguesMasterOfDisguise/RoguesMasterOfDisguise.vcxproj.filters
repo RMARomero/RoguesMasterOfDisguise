@@ -111,6 +111,9 @@
     <ClInclude Include="Rat.h">
       <Filter>Header Files\Entity\Enemy</Filter>
     </ClInclude>
+    <ClInclude Include="Potion.h">
+      <Filter>Header Files\Entity\Item</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -163,6 +166,9 @@
     </ClCompile>
     <ClCompile Include="RandomValue.cpp">
       <Filter>Source Files\Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="Potion.cpp">
+      <Filter>Source Files\Entity\Item</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

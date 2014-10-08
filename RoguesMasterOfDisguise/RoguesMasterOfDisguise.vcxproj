@@ -91,6 +91,7 @@
     <ClInclude Include="InitiateState.h" />
     <ClInclude Include="LevelManager.h" />
     <ClInclude Include="Map.h" />
+    <ClInclude Include="Potion.h" />
     <ClInclude Include="RandomValue.h" />
     <ClInclude Include="Rat.h" />
     <ClInclude Include="Room.h" />
@@ -110,6 +111,7 @@
     <ClCompile Include="InitiateState.cpp" />
     <ClCompile Include="LevelManager.cpp" />
     <ClCompile Include="Map.cpp" />
+    <ClCompile Include="Potion.cpp" />
     <ClCompile Include="RandomValue.cpp" />
     <ClCompile Include="Rat.cpp" />
     <ClCompile Include="RoguesMasterOfDisguise.cpp" />

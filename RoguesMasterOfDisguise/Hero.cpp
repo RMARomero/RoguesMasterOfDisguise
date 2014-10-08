@@ -9,6 +9,7 @@ using namespace std;
 
 Hero::Hero()
 {
+	_inventory = new vector<Item>();
 	_name = "";
 	_level = 1;
 	_xp = 0;
@@ -16,6 +17,11 @@ Hero::Hero()
 	_currentHealth = 10;
 	_attack = 1;
 	_defense = 1;
+}
+
+vector<Item>* Hero::getInventory()
+{
+	return _inventory;
 }
 
 void 
