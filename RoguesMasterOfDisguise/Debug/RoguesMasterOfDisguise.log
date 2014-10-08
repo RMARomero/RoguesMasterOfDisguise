@@ -1,41 +1,9 @@
-﻿Build started 8-10-2014 12:48:11.
-     1>Project "C:\Users\Ricardo\Documents\GitHub\RoguesMasterOfDisguise\RoguesMasterOfDisguise\RoguesMasterOfDisguise.vcxproj" on node 2 (Build target(s)).
-     1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Debug\RoguesMasterOfDisguise.pch" /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt ChoiceState.cpp CombatState.cpp Controller.cpp GameLoop.cpp GameState.cpp Hero.cpp InitiateState.cpp RoguesMasterOfDisguise.cpp
-         Hero.cpp
-         ChoiceState.cpp
-         Generating Code...
-         Compiling...
-         Controller.cpp
-         Generating Code...
-         Skipping... (no relevant changes detected)
-         RoguesMasterOfDisguise.cpp
-         InitiateState.cpp
-         GameState.cpp
-         GameLoop.cpp
-         CombatState.cpp
-       Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Ricardo\Documents\GitHub\RoguesMasterOfDisguise\Debug\RoguesMasterOfDisguise.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Ricardo\Documents\GitHub\RoguesMasterOfDisguise\Debug\RoguesMasterOfDisguise.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Ricardo\Documents\GitHub\RoguesMasterOfDisguise\Debug\RoguesMasterOfDisguise.lib" /MACHINE:X86 Debug\Bat.obj
-         Debug\ChoiceState.obj
-         Debug\CombatState.obj
-         Debug\Controller.obj
-         Debug\Enemy.obj
-         Debug\Item.obj
-         Debug\GameLoop.obj
-         Debug\GameState.obj
-         Debug\Hero.obj
-         Debug\InitiateState.obj
-         Debug\LevelManager.obj
-         Debug\Map.obj
-         Debug\Potion.obj
-         Debug\RandomValue.obj
-         Debug\Rat.obj
-         Debug\RoguesMasterOfDisguise.obj
-         Debug\Room.obj
-         Debug\stdafx.obj
-         RoguesMasterOfDisguise.vcxproj -> C:\Users\Ricardo\Documents\GitHub\RoguesMasterOfDisguise\Debug\RoguesMasterOfDisguise.exe
-     1>Done Building Project "C:\Users\Ricardo\Documents\GitHub\RoguesMasterOfDisguise\RoguesMasterOfDisguise\RoguesMasterOfDisguise.vcxproj" (Build target(s)).
+﻿Build started 4-10-2014 15:23:44.
+Project "C:\Users\Bas ter Bogt\Documents\GitHub\RoguesMasterOfDisguise\RoguesMasterOfDisguise\RoguesMasterOfDisguise.vcxproj" on node 2 (Build target(s)).
+Link:
+  RoguesMasterOfDisguise.vcxproj -> C:\Users\Bas ter Bogt\Documents\GitHub\RoguesMasterOfDisguise\Debug\RoguesMasterOfDisguise.exe
+Done Building Project "C:\Users\Bas ter Bogt\Documents\GitHub\RoguesMasterOfDisguise\RoguesMasterOfDisguise\RoguesMasterOfDisguise.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:04.68
+Time Elapsed 00:00:00.09

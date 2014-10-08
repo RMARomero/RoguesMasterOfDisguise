@@ -22,22 +22,14 @@ ChoiceState::processInput(string input){
 
 	if (input == "fight"){
 		_controller->setCurrentGameState(_controller->COMBAT_STATE);
-		result = _levelManager->GetCurrentMap()->GetCurrentRoom()->getAttackChoices();
+		result = "Combat Started: {}";
 	}
-	else if (input == "flee" || input == "move"){
+	if (input == "flee" || input == "move"){
 		result = _levelManager->GetCurrentMap()->GetCurrentRoom()->getMoveChoices();
 	}
 	else if (input == "map"){
 		_levelManager->GetCurrentMap()->PrintMap();
 		result = _levelManager->GetCurrentMap()->GetCurrentRoom()->getChoiceInformation();
-	}
-	else if (input == "stats"){
-		result = _hero->getStats();
-		result += _levelManager->GetCurrentMap()->GetCurrentRoom()->getChoiceInformation();
-	}
-	else if (input == "inventory"){
-		result = "You don't have any items right now...";
-		result += _levelManager->GetCurrentMap()->GetCurrentRoom()->getChoiceInformation();
 	}
 
 	/* Switch Room: */
@@ -70,7 +62,7 @@ ChoiceState::processInput(string input){
 	}
 	else if (input == "exit"){
 		if (_levelManager->GetCurrentMap()->GetCurrentRoom()->getExit()){
-			result = "___exit___";
+			result = "exit";
 		}
 	}
 

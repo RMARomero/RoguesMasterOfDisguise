@@ -51,11 +51,8 @@ public:
 	void enableBoss();
 	bool getBoss();
 
-	std::vector<Enemy*>* getEnemies();
-
 	std::string getChoiceInformation();
 	std::string getMoveChoices();
-	std::string getAttackChoices();
 	std::string toString();
 	~Room();
 };
