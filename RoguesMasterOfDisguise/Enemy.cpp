@@ -4,8 +4,14 @@
 using namespace std;
 
 
-Enemy::Enemy(){
-
+Enemy::Enemy(string name, int level, int healthPerLevel, int attackPerLevel, int defensePerLevel, int experienceOnKill){
+	_name = name;
+	_level = level;
+	_maxHealth = level * healthPerLevel;
+	_currentHealth = _maxHealth;
+	_attack = level * attackPerLevel;
+	_defense = level * defensePerLevel;
+	_experienceOnKill = experienceOnKill;
 }
 Enemy::~Enemy(){
 
@@ -47,12 +53,28 @@ Enemy::getCurrentAttack(){
 	return _attack;
 }
 
-void
+int
 Enemy::DoDamage(int attack){
-	_currentHealth -= ((_defense - attack) > 0) ? 0 : (_defense - attack);
+	int damage = ((attack - _defense) > 0) ? (attack - _defense) : 0;
+	_currentHealth -= damage;
+	return damage;
 }
 
 string
 Enemy::GetEnemyInfo(){
 	return "A wild " + GetName() + " appears!";
+}
+
+bool
+Enemy::IsAlive(){
+	return (_currentHealth <= 0) ? false : true;
+}
+
+int Enemy::GetExperienceOnKill(){
+	return _experienceOnKill;
+}
+
+
+Enemy* Enemy::Clone(int level){
+	return new Enemy(_name, level, _maxHealth, _attack, _defense, _experienceOnKill);
 }

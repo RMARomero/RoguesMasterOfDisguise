@@ -1,5 +1,4 @@
 #pragma once
-#include <string>
 #include "Hero.h"
 #include "LevelManager.h"
 
@@ -16,6 +15,7 @@ public:
 	Controller();
 	std::string getInput(std::string input);
 	void setCurrentGameState(int GameState);
+	//GameState* getCurrentGameState();
 	~Controller();
 
 	const int INITIATE_STATE = 0;

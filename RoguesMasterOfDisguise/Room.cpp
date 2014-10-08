@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "Room.h"
 #include "RandomValue.h"
-#include "Rat.h"
+#include "ReadTextFile.h"
 
 using namespace std;
 
@@ -13,10 +13,8 @@ Room::Room(int room_lvl)
 
 	_room_level = room_lvl;
 	_random = RandomValue::getInstance();
-	setRoomSize();
-	setRoomCondition();
-	setRoomDecoration();
-	setRoomLightning();
+
+	_roomDescription = ReadTextFile::getInstance()->getRandomRoomValue();
 
 	_roomNorth = nullptr;
 	_roomEast = nullptr;
@@ -31,11 +29,7 @@ Room::toString(){
 	string result = "Description: ";
 
 	result += getVisitedInformation();
-	result += _roomSize + " ";
-	result += _roomCondition + " ";
-	result += _roomDecoration + " ";
-	result += _roomLightning;
-
+	result += _roomDescription;
 	result += getExitInformation();
 	result += getEnemyInformation();
 	result += getChoiceInformation();
@@ -171,6 +165,7 @@ Room::getChoiceInformation(){
 
 	result += "map, ";
 	result += "inventory, ";
+	result += "stats, ";
 
 	if (getStairsUp() || getStairsDown()){
 		result += "stairs, ";
@@ -212,72 +207,17 @@ Room::spawnEnemies(){
 	}
 
 	for (int i = 0; i < amountOfEnemies; i++){
-		_enemies.push_back(new Rat(_room_level));
+		//_enemies.push_back(new Enemy("rat", _room_level));
+		_enemies.push_back(ReadTextFile::getInstance()->getRandomEnemy(_room_level));
 	}
 
 }
 
-void 
-Room::setRoomSize(){
-	int chance = _random->getRandom(1, 3);
-	if (chance == 1){
-		_roomSize = "This is a large room.";
-	}
-	else if (chance == 2){
-		_roomSize = "This is a medium sized room.";
-	}
-	else if (chance == 3){
-		_roomSize = "This is a small room.";
-	}
+
+std::vector<Enemy*>* Room::getEnemies(){
+	return &_enemies;
 }
 
-void 
-Room::setRoomCondition(){
-	int chance = _random->getRandom(1, 4);
-	if (chance == 1){
-		_roomCondition = "The room is tidy. It's almost... suspicious.";
-	}
-	else if (chance == 2){
-		_roomCondition = "The room is pretty messy.";
-	}
-	else if (chance == 3){
-		_roomCondition = "There are a few blood stains on the floor.";
-	}
-	else if (chance == 4){
-		_roomCondition = "There is so much blood in here, there must have been a massacre.";
-	}
-}
-
-void 
-Room::setRoomDecoration(){
-	int chance = _random->getRandom(1, 4);
-	if (chance == 1){
-		_roomDecoration = "There is a bed in the right corner. It's in a bad shape, though.";
-	}
-	else if (chance == 2){
-		_roomDecoration = "There is a couche and a fireplace near the wall. Surprisingly enough, it seems pretty.. cozy.";
-	}
-	else if (chance == 3){
-		_roomDecoration = "There is no furnature at all in this room. Such a waste of space!";
-	}
-	else if (chance == 4){
-		_roomDecoration = "It looks like all the furnature in this room has moved somewhere else. There is dust missing on the ground where objects used to be present.";
-	}
-}
-
-void 
-Room::setRoomLightning(){
-	int chance = _random->getRandom(1, 3);
-	if (chance == 1){
-		_roomLightning = "It's really dark in here, just a small light near the wall.";
-	}
-	else if (chance == 2){
-		_roomLightning = "The lightning in this room is pretty balanced. I can clearly see everything, I think.";
-	}
-	else if (chance == 3){
-		_roomLightning = "There are soo many lights in here.. I almost can't see!";
-	}
-}
 
 void 
 Room::setVisited(){
@@ -344,6 +284,11 @@ Room::getMoveChoices(){
 	}
 	result += "}";
 	return result;
+}
+
+
+std::string Room::getAttackChoices(){
+	return "{attack, flee, inventory, stats}";
 }
 
 void 

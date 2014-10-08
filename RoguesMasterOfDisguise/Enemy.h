@@ -1,5 +1,4 @@
 #pragma once
-#include <string>
 
 class Enemy
 {
@@ -10,14 +9,18 @@ protected:
 	int _currentHealth;
 	int _attack;
 	int _defense;
+	int _experienceOnKill;
 public:
-	Enemy();
-	virtual std::string GetName();
-	virtual int GetLevel();
-	virtual std::string GetEnemyInfo();
-	virtual std::string GetBattleStatus();
-	virtual int getCurrentAttack();
-	virtual void DoDamage(int attack);
-	virtual ~Enemy();
+	Enemy(std::string name, int level, int healthPerLevel, int attackPerLevel, int defensePerLevel, int experienceOnKill);
+	std::string GetName();
+	int GetLevel();
+	std::string GetEnemyInfo();
+	std::string GetBattleStatus();
+	int getCurrentAttack();
+	int DoDamage(int attack);
+	int GetExperienceOnKill();
+	bool IsAlive();
+	Enemy* Clone(int level);
+	~Enemy();
 };
 

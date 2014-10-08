@@ -1,5 +1,4 @@
 #pragma once
-#include <string>
 #include <vector>
 #include "RandomValue.h"
 #include "Enemy.h"
@@ -20,17 +19,10 @@ private:
 	Room* _roomEast;
 	Room* _roomSouth;
 	Room* _roomWest;
-	std::string _roomSize;
-	std::string _roomCondition;
-	std::string _roomDecoration;
-	std::string _roomLightning;
+	std::string _roomDescription;
 	int _roomTrap;
 
 	RandomValue* _random;
-	void setRoomSize();
-	void setRoomCondition();
-	void setRoomDecoration();
-	void setRoomLightning();
 	std::string getEnemyInformation();
 	std::string getExitInformation();
 	std::string getVisitedInformation();
@@ -59,8 +51,11 @@ public:
 	void enableBoss();
 	bool getBoss();
 
+	std::vector<Enemy*>* getEnemies();
+
 	std::string getChoiceInformation();
 	std::string getMoveChoices();
+	std::string getAttackChoices();
 	std::string toString();
 	~Room();
 };
