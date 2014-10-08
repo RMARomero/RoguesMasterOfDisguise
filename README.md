@@ -1,4 +1,0 @@
-RoguesMasterOfDisguise
-======================
-
-cplusplus final assignment
