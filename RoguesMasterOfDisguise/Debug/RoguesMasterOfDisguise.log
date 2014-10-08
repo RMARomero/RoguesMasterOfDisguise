@@ -1,25 +1,9 @@
-﻿Build started 7-10-2014 17:34:18.
-     1>Project "C:\Users\Bas\Documents\GitHub\RoguesMasterOfDisguise\RoguesMasterOfDisguise\RoguesMasterOfDisguise.vcxproj" on node 2 (Build target(s)).
+﻿Build started 8-10-2014 15:17:59.
+     1>Project "C:\Users\Ricardo\Documents\GitHub\RoguesMasterOfDisguise\RoguesMasterOfDisguise\RoguesMasterOfDisguise.vcxproj" on node 2 (Build target(s)).
      1>Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Bas\Documents\GitHub\RoguesMasterOfDisguise\Debug\RoguesMasterOfDisguise.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Bas\Documents\GitHub\RoguesMasterOfDisguise\Debug\RoguesMasterOfDisguise.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Bas\Documents\GitHub\RoguesMasterOfDisguise\Debug\RoguesMasterOfDisguise.lib" /MACHINE:X86 Debug\ChoiceState.obj
-         Debug\CombatState.obj
-         Debug\Controller.obj
-         Debug\Enemy.obj
-         Debug\Item.obj
-         Debug\GameLoop.obj
-         Debug\GameState.obj
-         Debug\Hero.obj
-         Debug\InitiateState.obj
-         Debug\LevelManager.obj
-         Debug\Map.obj
-         Debug\RandomValue.obj
-         Debug\ReadTextFile.obj
-         Debug\RoguesMasterOfDisguise.obj
-         Debug\Room.obj
-         Debug\stdafx.obj
-         RoguesMasterOfDisguise.vcxproj -> C:\Users\Bas\Documents\GitHub\RoguesMasterOfDisguise\Debug\RoguesMasterOfDisguise.exe
-     1>Done Building Project "C:\Users\Bas\Documents\GitHub\RoguesMasterOfDisguise\RoguesMasterOfDisguise\RoguesMasterOfDisguise.vcxproj" (Build target(s)).
+         RoguesMasterOfDisguise.vcxproj -> C:\Users\Ricardo\Documents\GitHub\RoguesMasterOfDisguise\Debug\RoguesMasterOfDisguise.exe
+     1>Done Building Project "C:\Users\Ricardo\Documents\GitHub\RoguesMasterOfDisguise\RoguesMasterOfDisguise\RoguesMasterOfDisguise.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:00.23
+Time Elapsed 00:00:00.47
