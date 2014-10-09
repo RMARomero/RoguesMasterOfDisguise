@@ -44,5 +44,6 @@ GameLoop::~GameLoop()
 	delete RandomValue::getInstance();
 	delete ReadTextFile::getInstance();
 	//TODO: DELETE RANDOM SINGLETON
+	//TODO: FIX MEMLEAKS IN ROOM AND MAP
 }
 
