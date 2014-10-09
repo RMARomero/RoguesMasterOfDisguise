@@ -1,0 +1,21 @@
+Size:
+This is a large room.
+This is a medium sized room.
+This is a small room.
+
+Condition:
+The room is tidy. It's almost... suspicious.
+The room is pretty messy.
+There are a few blood stains on the floor.
+There is so much blood in here, there must have been a massacre.
+
+Decoration:
+There is a bed in the right corner. It's in a bad shape, though.
+There is a couche and a fireplace near the wall. Surprisingly enough, it seems pretty.. cozy.
+There is no furnature at all in this room. Such a waste of space!
+It looks like all the furnature in this room has moved somewhere else. There is dust missing on the ground where objects used to be present.
+
+Lightning:
+It's really dark in here, just a small light near the wall.
+The lightning in this room is pretty balanced. I can clearly see everything, I think.
+There are soo many lights in here.. I almost can't see!
