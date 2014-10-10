@@ -169,8 +169,8 @@ Room::getChoiceInformation(){
 	}
 	else{
 		result += "move, ";
+		result += "rest, ";
 	}
-
 	result += "map, ";
 	result += "inventory, ";
 	result += "stats, ";
@@ -196,9 +196,9 @@ Room::spawnEnemies(){
 	if (chance > 25){
 		return;
 	}
-	chance = _random->getRandom(0, 100);
+	chance = _random->getRandom(0, 99);
 	int amountOfEnemies;
-	if (chance < 2){
+	if (chance < 3){
 		amountOfEnemies = 5; //3% chance
 	}
 	else if (chance < 9){

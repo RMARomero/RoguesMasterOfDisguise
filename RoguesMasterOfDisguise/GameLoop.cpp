@@ -15,6 +15,7 @@ GameLoop::GameLoop()
 	_playing = true;
 	while (_playing){
 		cout << endl << getInput() << endl;
+		//_controller->PrintMap();
 	}
 }
 
@@ -23,11 +24,12 @@ GameLoop::getInput()
 {
 	string input = "";
 	getline(cin, input);
+	//cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" << endl;
+	
 	string result = _controller->getInput(input);
 
 	const std::string ext("___exit___");
-	if (result.size() >= ext.size() &&
-		result.substr(result.size() - ext.size()) == "___exit___")
+	if (result.size() >= ext.size() && result.substr(result.size() - ext.size()) == "___exit___")
 	{
 		result = result.substr(0, result.size() - ext.size());
 		_playing = false;

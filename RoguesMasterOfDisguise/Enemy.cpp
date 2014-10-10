@@ -11,7 +11,7 @@ Enemy::Enemy(string name, int level, int healthPerLevel, int attackPerLevel, int
 	_currentHealth = _maxHealth;
 	_attack = level * attackPerLevel;
 	_defense = level * defensePerLevel;
-	_experienceOnKill = experienceOnKill;
+	_experienceOnKill = experienceOnKill * level;
 }
 Enemy::~Enemy(){
 
