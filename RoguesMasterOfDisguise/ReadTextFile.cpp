@@ -29,7 +29,7 @@ ReadTextFile::~ReadTextFile()
 	//delete _instance;
 
 	//delete _enemies;
-	for (int i = 0; i < UniqueEnemies.size(); i++){
+	for (unsigned int i = 0; i < UniqueEnemies.size(); i++){
 		delete UniqueEnemies.at(i);
 	}
 	delete randomRoomSizeValues;

@@ -14,7 +14,7 @@ InitiateState::InitiateState(Hero *player, LevelManager *levelManager, Controlle
 	_controller = controller;
 
 	cout << "--------------------------\n--    The underworld    --\n--------------------------\n\n" << endl;
-	cout << "\"You... \How.. did you get.. here?... \nIt matters ... not. You must ... ... save ... them...\"\n\n*cough cough*.\n\n\"What is your name...?\"\n " << endl;
+	cout << "\"You... How.. did you get.. here?... \nIt matters ... not. You must ... ... save ... them...\"\n\n*cough cough*.\n\n\"What is your name...?\"\n " << endl;
 
 }
 

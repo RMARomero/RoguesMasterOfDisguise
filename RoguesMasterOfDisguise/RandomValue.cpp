@@ -11,7 +11,7 @@ using namespace std;
 RandomValue* RandomValue::_instance = nullptr;
 
 RandomValue::RandomValue(){
-	srand(time(0));
+	srand((unsigned int)time(NULL));
 }
 
 RandomValue* 

@@ -87,7 +87,7 @@ Hero::IsAlive(){
 bool Hero::addExperience(int experience){
 	_xp += experience;
 
-	int supposed_level = 1 + (0.3 * sqrt(_xp));
+	int supposed_level = 1 + (int)(0.3 * sqrt(_xp));
 	if (_level < supposed_level){
 		_level = supposed_level;
 		_maxHealth += _baseHealth;
@@ -105,5 +105,8 @@ int Hero::getLevel(){
 
 Hero::~Hero()
 {
-	
+	for (unsigned int i = 0; i < _inventory.size(); i++)
+	{
+		delete _inventory[i];
+	}
 }

@@ -142,7 +142,7 @@ Room::getEnemyInformation(){
 		result += "\n"+ it
 	}*/
 
-	for (int i = 0; i < _enemies.size(); i++)
+	for (unsigned int i = 0; i < _enemies.size(); i++)
 	{
 		result += "\n" + _enemies.at(i)->GetEnemyInfo();
 	}
@@ -311,7 +311,7 @@ Room::getBoss(){
 Room::~Room()
 {
 	//delete _enemies;
-	for (int i = 0; i < _enemies.size(); i++){
+	for (unsigned int i = 0; i < _enemies.size(); i++){
 		delete _enemies.at(i);
 	}
 }
