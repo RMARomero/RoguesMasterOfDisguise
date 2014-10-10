@@ -5,11 +5,17 @@
 #include <sstream>
 #include <iostream>
 
+#include "Potion.h"
+
 using namespace std;
 
 Hero::Hero()
 {
-	_inventory = new vector<Item>();
+	//_inventory = new vector<Item*>();
+	//test inventory
+	_inventory.push_back(new Potion("Mighty Potion", "A very potent potion that heals you for over 9000 hp."));
+	_inventory.push_back(new Potion("Mystery Potion", "A mystery potion with unkown effects. Use at your own risk."));
+	_inventory.push_back(new Potion("Lesser Potion", "A common potion that heals you for 10 hp."));
 	_name = "";
 	_level = 1;
 	_xp = 0;
@@ -23,9 +29,16 @@ Hero::Hero()
 	_baseHealth = 2;
 }
 
-vector<Item>* Hero::getInventory()
+void Hero::printInventory()
 {
-	return _inventory;
+	unsigned int slot = 1;
+	for (vector<Item*>::iterator it = _inventory.begin(); it != _inventory.end(); it++)
+	{
+		Item* ptrItem = *it;
+		cout << endl;
+		cout << slot << "." << ptrItem->getName() << ": " << ptrItem->getDescription() << endl;
+		slot++;
+	}
 }
 
 void 
@@ -89,5 +102,5 @@ int Hero::getLevel(){
 
 Hero::~Hero()
 {
-	delete _inventory;
+	
 }

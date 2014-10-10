@@ -36,7 +36,7 @@ ChoiceState::processInput(string input){
 		result += _levelManager->GetCurrentMap()->GetCurrentRoom()->getChoiceInformation();
 	}
 	else if (input == "inventory"){
-		result = "You don't have any items right now...";
+		_hero->printInventory();
 		result += _levelManager->GetCurrentMap()->GetCurrentRoom()->getChoiceInformation();
 	}
 

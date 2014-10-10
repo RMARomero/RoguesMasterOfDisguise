@@ -6,7 +6,7 @@
 class Hero
 {
 private:
-	std::vector<Item>* _inventory;
+	std::vector<Item*> _inventory;
 	std::string _name;
 	int _level;
 	int _xp;
@@ -21,7 +21,7 @@ private:
 	int _defense;
 public:
 	Hero();
-	std::vector<Item>* getInventory();
+	void printInventory();
 	void setName(std::string name);
 	std::string getName();
 	std::string getStats();
