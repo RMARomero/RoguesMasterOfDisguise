@@ -15,7 +15,7 @@ private:
 	std::vector<std::string>* randomRoomDecorationValues;
 	std::vector<std::string>* randomRoomLightningValues;
 
-	std::vector<Enemy*>* UniqueEnemies;
+	std::vector<Enemy*> UniqueEnemies;
 
 	void fillRoomVectors();
 	void fillEnemyVector();

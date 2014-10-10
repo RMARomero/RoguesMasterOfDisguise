@@ -30,6 +30,7 @@ public:
 	bool addExperience(int experience);
 	int getLevel();
 	int DoDamage(int attack);
+	void Rest();
 	bool IsAlive();
 	~Hero();
 };

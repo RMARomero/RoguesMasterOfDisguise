@@ -8,7 +8,6 @@ ReadTextFile* ReadTextFile::_instance = nullptr;
 
 ReadTextFile::ReadTextFile()
 {
-	UniqueEnemies = new vector<Enemy*>();
 	randomRoomSizeValues = new vector<string>();
 	randomRoomConditionValues = new vector<string>();
 	randomRoomDecorationValues = new vector<string>();
@@ -28,7 +27,11 @@ ReadTextFile::getInstance() {
 ReadTextFile::~ReadTextFile()
 {
 	//delete _instance;
-	delete UniqueEnemies;
+
+	//delete _enemies;
+	for (int i = 0; i < UniqueEnemies.size(); i++){
+		delete UniqueEnemies.at(i);
+	}
 	delete randomRoomSizeValues;
 	delete randomRoomConditionValues;
 	delete randomRoomDecorationValues;
@@ -78,7 +81,7 @@ void ReadTextFile::fillEnemyVector(){
 
 	while (input_file >> name >> healthPerLevel >> attackPerLevel >> defensePerLevel >> experienceOnKill) {
 		string result = name + to_string(healthPerLevel) + to_string(attackPerLevel) + to_string(defensePerLevel) + to_string(experienceOnKill);
-		UniqueEnemies->push_back(new Enemy(name, 1, healthPerLevel, attackPerLevel, defensePerLevel, experienceOnKill));
+		UniqueEnemies.push_back(new Enemy(name, 1, healthPerLevel, attackPerLevel, defensePerLevel, experienceOnKill));
 	}
 	//Enemy* enemy = ;
 
@@ -101,6 +104,6 @@ string ReadTextFile::getRandomRoomValue(){
 	return roomSize + " " + roomCondition + " " + roomDecoration + " " + roomLightning;
 }
 Enemy* ReadTextFile::getRandomEnemy(int level){
-	int chance = _random->getRandom(0, UniqueEnemies->size());
-	return UniqueEnemies->at(chance)->Clone(level);
+	int chance = _random->getRandom(0, UniqueEnemies.size());
+	return UniqueEnemies.at(chance)->Clone(level);
 }

@@ -7,7 +7,6 @@ using namespace std;
 
 Room::Room(int room_lvl)
 {
-	_enemies = new vector<Enemy*>();
 	_visited = false;
 	_stairsUp = false;
 	_stairsDown = false;
@@ -133,7 +132,7 @@ Room::getExitInformation(){
 string
 Room::getEnemyInformation(){
 	string result = "";
-	if (_enemies->size() <= 0){
+	if (_enemies.size() <= 0){
 		return result;
 	}
 	result += "\n\nPresence: ";
@@ -143,9 +142,9 @@ Room::getEnemyInformation(){
 		result += "\n"+ it
 	}*/
 
-	for (int i = 0; i < _enemies->size(); i++)
+	for (int i = 0; i < _enemies.size(); i++)
 	{
-		result += "\n" + _enemies->at(i)->GetEnemyInfo();
+		result += "\n" + _enemies.at(i)->GetEnemyInfo();
 	}
 
 	return result;
@@ -163,14 +162,14 @@ Room::getVisitedInformation(){
 string 
 Room::getChoiceInformation(){
 	string result = "\n\n{";
-	if (_enemies->size() > 0){
+	if (_enemies.size() > 0){
 		result += "fight, ";
 		result += "flee, ";
 	}
 	else{
 		result += "move, ";
+		result += "rest, ";
 	}
-
 	result += "map, ";
 	result += "inventory, ";
 	result += "stats, ";
@@ -196,9 +195,9 @@ Room::spawnEnemies(){
 	if (chance > 25){
 		return;
 	}
-	chance = _random->getRandom(0, 100);
+	chance = _random->getRandom(0, 99);
 	int amountOfEnemies;
-	if (chance < 2){
+	if (chance < 3){
 		amountOfEnemies = 5; //3% chance
 	}
 	else if (chance < 9){
@@ -216,14 +215,14 @@ Room::spawnEnemies(){
 
 	for (int i = 0; i < amountOfEnemies; i++){
 		//_enemies.push_back(new Enemy("rat", _room_level));
-		_enemies->push_back(ReadTextFile::getInstance()->getRandomEnemy(_room_level));
+		_enemies.push_back(ReadTextFile::getInstance()->getRandomEnemy(_room_level));
 	}
 
 }
 
 
 std::vector<Enemy*>* Room::getEnemies(){
-	return _enemies;
+	return &_enemies;
 }
 
 
@@ -311,5 +310,8 @@ Room::getBoss(){
 
 Room::~Room()
 {
-	delete _enemies;
+	//delete _enemies;
+	for (int i = 0; i < _enemies.size(); i++){
+		delete _enemies.at(i);
+	}
 }

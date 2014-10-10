@@ -25,7 +25,8 @@ ChoiceState::processInput(string input){
 		result = _levelManager->GetCurrentMap()->GetCurrentRoom()->getAttackChoices();
 	}
 	else if (input == "flee" || input == "move"){
-		result = _levelManager->GetCurrentMap()->GetCurrentRoom()->getMoveChoices();
+		//result = _levelManager->GetCurrentMap()->GetCurrentRoom()->toString();
+		result += _levelManager->GetCurrentMap()->GetCurrentRoom()->getMoveChoices();
 	}
 	else if (input == "map"){
 		_levelManager->GetCurrentMap()->PrintMap();
@@ -37,6 +38,16 @@ ChoiceState::processInput(string input){
 	}
 	else if (input == "inventory"){
 		_hero->printInventory();
+		result += _levelManager->GetCurrentMap()->GetCurrentRoom()->getChoiceInformation();
+	}
+	else if (input == "rest"){
+		if (_levelManager->GetCurrentMap()->GetCurrentRoom()->getEnemies()->size() <= 0){
+			result += "You've rested for a while and regained some health.";
+			_hero->Rest();
+		}
+		else{
+			result += "You shouln't rest with enemies nearby!";
+		}
 		result += _levelManager->GetCurrentMap()->GetCurrentRoom()->getChoiceInformation();
 	}
 
@@ -80,4 +91,5 @@ ChoiceState::processInput(string input){
 
 ChoiceState::~ChoiceState()
 {
+
 }

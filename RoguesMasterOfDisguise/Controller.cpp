@@ -55,3 +55,7 @@ Controller::~Controller()
 	delete _gameStateChoice;
 	delete _gameStateCombat;
 }
+
+void Controller::PrintMap(){
+	_levelManager->GetCurrentMap()->PrintMap();
+}

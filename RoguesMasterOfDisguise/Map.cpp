@@ -289,8 +289,10 @@ Map::~Map()
 	//delete _startingRoom;
 	for (int i = 0; i < matrixHeight; i++){
 		for (int j = 0; j < matrixWidth; j++){
-			delete matrix[j][i];
+			if (matrix[j][i] != nullptr) delete matrix[j][i];
 		}
 	}
+
+
 
 }

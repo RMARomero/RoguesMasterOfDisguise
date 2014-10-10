@@ -74,6 +74,9 @@ Hero::DoDamage(int attack){
 	_currentHealth -= damage;
 	return damage;
 }
+void Hero::Rest(){
+	_currentHealth = _maxHealth;
+}
 
 bool 
 Hero::IsAlive(){

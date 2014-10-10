@@ -27,7 +27,7 @@ private:
 	std::string getExitInformation();
 	std::string getVisitedInformation();
 
-	std::vector<Enemy*>* _enemies;
+	std::vector<Enemy*> _enemies;
 	void spawnEnemies();
 public:
 	Room(int room_level);
