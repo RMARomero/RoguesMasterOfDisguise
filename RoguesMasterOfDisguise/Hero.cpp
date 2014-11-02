@@ -13,9 +13,9 @@ Hero::Hero()
 {
 	//_inventory = new vector<Item*>();
 	//test inventory
-	_inventory.push_back(new Potion("Mighty Potion", "A very potent potion that heals you for over 9000 hp."));
-	_inventory.push_back(new Potion("Mystery Potion", "A mystery potion with unkown effects. Use at your own risk."));
-	_inventory.push_back(new Potion("Lesser Potion", "A common potion that heals you for 10 hp."));
+	_inventory.push_back(new Potion("Mighty Potion", "A very potent potion that heals you for over 100 hp.", 100));
+	_inventory.push_back(new Potion("Mystery Potion", "A mystery potion with unkown effects. Use at your own risk.", 50));
+	_inventory.push_back(new Potion("Lesser Potion", "A common potion that heals you for 10 hp.", 10));
 	_name = "";
 	_level = 1;
 	_xp = 0;
@@ -39,6 +39,11 @@ void Hero::printInventory()
 		cout << slot << "." << ptrItem->getName() << ": " << ptrItem->getDescription() << endl;
 		slot++;
 	}
+}
+
+vector<Item*> Hero::getInventory()
+{
+	return _inventory;
 }
 
 void 
@@ -66,6 +71,18 @@ int Hero::getCurrentAttack(){
 
 int Hero::getCurrentHealth(){
 	return _currentHealth;
+}
+
+void Hero::setHealth(int health)
+{
+	_currentHealth += health;
+}
+
+void Hero::Heal(int heal)
+{
+	_currentHealth += heal;
+	if (_currentHealth >= _maxHealth)
+		_currentHealth = _maxHealth;
 }
 
 int

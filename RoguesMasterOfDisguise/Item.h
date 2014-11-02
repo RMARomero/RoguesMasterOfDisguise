@@ -6,6 +6,7 @@ class Item
 public:
 	Item();
 	virtual ~Item();
+	virtual std::string Use() = 0;
 	virtual std::string getName();
 	virtual std::string getDescription();
 protected:

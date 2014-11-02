@@ -1,6 +1,8 @@
 #include "stdafx.h"
 #include "Potion.h"
 
+using namespace std;
+
 
 Potion::Potion()
 {
@@ -8,14 +10,20 @@ Potion::Potion()
 	m_Description = "";
 }
 
-Potion::Potion(std::string aName, std::string aDescription)
+Potion::Potion(std::string aName, std::string aDescription, int aAmmount)
 {
 	m_Name = aName;
 	m_Description = aDescription;
+	m_Ammount = to_string(aAmmount);
 }
 
 Potion::~Potion()
 {
+}
+
+string Potion::Use()
+{
+	return m_Ammount;
 }
 
 std::string Potion::getName()
@@ -26,9 +34,4 @@ std::string Potion::getName()
 std::string Potion::getDescription()
 {
 	return m_Description;
-}
-
-int Potion::Use()
-{
-	return m_Ammount;
 }

@@ -22,11 +22,14 @@ private:
 public:
 	Hero();
 	void printInventory();
+	std::vector<Item*> getInventory();
 	void setName(std::string name);
 	std::string getName();
 	std::string getStats();
 	int getCurrentAttack();
 	int getCurrentHealth();
+	void setHealth(int health);
+	void Heal(int heal);
 	bool addExperience(int experience);
 	int getLevel();
 	int DoDamage(int attack);

@@ -4,6 +4,7 @@
 #include "InitiateState.h"
 #include "ChoiceState.h"
 #include "CombatState.h"
+#include "InventoryState.h"
 
 #include <sstream>
 #include <iostream>
@@ -19,6 +20,7 @@ Controller::Controller()
 	_gameStateInitiate = new InitiateState(_hero, _levelManager, this);
 	_gameStateChoice = new ChoiceState(_hero, _levelManager, this);
 	_gameStateCombat = new CombatState(_hero, _levelManager, this);
+	_gameStateInventory = new InventoryState(_hero, _levelManager, this);
 	setCurrentGameState(INITIATE_STATE);
 }
 
@@ -41,6 +43,8 @@ Controller::setCurrentGameState(int GameState){
 	else if (GameState == COMBAT_STATE){
 		_currentGameState = _gameStateCombat;
 	}
+	else if (GameState == INVENTORY_STATE)
+		_currentGameState = _gameStateInventory;
 }
 
 //GameState* Controller::getCurrentGameState(){
@@ -54,6 +58,7 @@ Controller::~Controller()
 	delete _gameStateInitiate;
 	delete _gameStateChoice;
 	delete _gameStateCombat;
+	delete _gameStateInventory;
 }
 
 void Controller::PrintMap(){

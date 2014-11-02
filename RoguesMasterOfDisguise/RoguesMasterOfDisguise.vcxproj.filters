@@ -111,6 +111,9 @@
     <ClInclude Include="Potion.h">
       <Filter>Header Files\Entity\Item</Filter>
     </ClInclude>
+    <ClInclude Include="InventoryState.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -163,6 +166,9 @@
     </ClCompile>
     <ClCompile Include="Potion.cpp">
       <Filter>Source Files\Entity\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="InventoryState.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
