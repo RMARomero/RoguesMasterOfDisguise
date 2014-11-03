@@ -48,6 +48,7 @@ Map::SetCurrentRoom(Room* room){
 }
 
 
+//create a random item here?
 void 
 Map::CreateRoom(Room* room, int x, int y, bool mainRoad, int current_length, int max_length){
 

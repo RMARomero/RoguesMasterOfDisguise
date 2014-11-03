@@ -37,8 +37,11 @@ CombatState::processInput(string input){
 		result += _levelManager->GetCurrentMap()->GetCurrentRoom()->getMoveChoices();
 	}
 	else if (input == "inventory"){
-		result = "You don't have any items right now...";
-		result += _levelManager->GetCurrentMap()->GetCurrentRoom()->getChoiceInformation();
+		//result = "You don't have any items right now...";
+		//result += _levelManager->GetCurrentMap()->GetCurrentRoom()->getChoiceInformation();
+		result += "I might need something in a pinch...";
+		_hero->printInventory();
+		_controller->setCurrentGameState(_controller->INVENTORY_STATE);
 	}
 
 	if (input == "stats"){

@@ -8,7 +8,7 @@ public:
 	Potion();
 	Potion(std::string aName, std::string aDescription, int aAmmount);
 	virtual ~Potion();
-	std::string Use();
+	std::string Use(Hero* aHero);
 	virtual std::string getName();
 	virtual std::string getDescription();
 

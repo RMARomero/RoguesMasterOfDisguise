@@ -6,6 +6,7 @@
 #include <iostream>
 
 #include "Potion.h"
+#include "Torch.h"
 
 using namespace std;
 
@@ -16,6 +17,7 @@ Hero::Hero()
 	_inventory.push_back(new Potion("Mighty Potion", "A very potent potion that heals you for over 100 hp.", 100));
 	_inventory.push_back(new Potion("Mystery Potion", "A mystery potion with unkown effects. Use at your own risk.", 50));
 	_inventory.push_back(new Potion("Lesser Potion", "A common potion that heals you for 10 hp.", 10));
+	_equipedItem = new Torch(); //remove this here? Give hero always a torch?
 	_name = "";
 	_level = 1;
 	_xp = 0;
@@ -39,6 +41,16 @@ void Hero::printInventory()
 		cout << slot << "." << ptrItem->getName() << ": " << ptrItem->getDescription() << endl;
 		slot++;
 	}
+}
+
+Item* Hero::getEquippedItem()
+{
+	return _equipedItem;
+}
+
+void Hero::setEquippedItem(Item* equipment)
+{
+	_equipedItem = equipment;
 }
 
 vector<Item*> Hero::getInventory()
@@ -126,4 +138,6 @@ Hero::~Hero()
 	{
 		delete _inventory[i];
 	}
+
+	delete equipedItem;
 }

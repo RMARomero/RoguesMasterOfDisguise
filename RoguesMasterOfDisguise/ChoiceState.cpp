@@ -37,9 +37,9 @@ ChoiceState::processInput(string input){
 		result += _levelManager->GetCurrentMap()->GetCurrentRoom()->getChoiceInformation();
 	}
 	else if (input == "inventory"){
+		result += "Let's have a look...";
 		_hero->printInventory();
 		_controller->setCurrentGameState(_controller->INVENTORY_STATE);
-		//result += _levelManager->GetCurrentMap()->GetCurrentRoom()->getChoiceInformation();
 	}
 	else if (input == "rest"){
 		if (_levelManager->GetCurrentMap()->GetCurrentRoom()->getEnemies()->size() <= 0){

@@ -21,9 +21,11 @@ Potion::~Potion()
 {
 }
 
-string Potion::Use()
+string Potion::Use(Hero* aHero)
 {
-	return m_Ammount;
+	//int heal = stoi(m_Ammount);
+	aHero->Heal(stoi(m_Ammount));
+	return "You healed for " + m_Ammount + " ammount of health points";
 }
 
 std::string Potion::getName()
