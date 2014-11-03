@@ -139,5 +139,5 @@ Hero::~Hero()
 		delete _inventory[i];
 	}
 
-	delete equipedItem;
+	delete _equipedItem;
 }
