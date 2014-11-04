@@ -12,8 +12,17 @@ ReadTextFile::ReadTextFile()
 	randomRoomConditionValues = new vector<string>();
 	randomRoomDecorationValues = new vector<string>();
 	randomRoomLightningValues = new vector<string>();
+
+	potionNames = new vector<string>();
+	potionDescriptions = new vector<string>();
+	potionHeals = new vector<string>();
+
+	torchNames = new vector<string>();
+	torchValues = new vector<string>();
+
 	fillRoomVectors();
 	fillEnemyVector();
+	fillItemVector();
 }
 
 ReadTextFile*
@@ -36,6 +45,17 @@ ReadTextFile::~ReadTextFile()
 	delete randomRoomConditionValues;
 	delete randomRoomDecorationValues;
 	delete randomRoomLightningValues;
+
+	delete potionNames;
+	potionNames = nullptr;
+	delete potionDescriptions;
+	potionDescriptions = nullptr;
+	delete potionHeals;
+	potionHeals = nullptr;
+	delete torchNames;
+	torchNames = nullptr;
+	delete torchValues;
+	torchValues = nullptr;
 }
 
 void ReadTextFile::fillRoomVectors(){
@@ -86,6 +106,46 @@ void ReadTextFile::fillEnemyVector(){
 	//Enemy* enemy = ;
 
 }
+ 
+void ReadTextFile::fillItemVector() {
+	const string randomItemValues("RandomItemValues.txt");
+	string line;
+
+	ifstream input_file(randomItemValues);
+
+	vector<string>* currentVector = potionNames;
+
+	while (getline(input_file, line)) 
+	{
+		if (line == "")
+		{
+		}
+		else if (line == "PotionName:")
+		{
+			currentVector = potionNames;
+		}
+		else if (line == "PotionDescription:")
+		{
+			currentVector = potionDescriptions;
+		}
+		else if (line == "PotionHeal:")
+		{
+			currentVector = potionHeals;
+		}
+		else if (line == "TorchName:")
+		{
+			currentVector = torchNames;
+		}
+		else if (line == "TorchValue:")
+		{
+			currentVector = torchValues;
+		}
+		else
+		{
+			currentVector->push_back(line);
+		}
+	}
+}
 
 string ReadTextFile::getRandomRoomValue(){
 
@@ -103,7 +163,42 @@ string ReadTextFile::getRandomRoomValue(){
 
 	return roomSize + " " + roomCondition + " " + roomDecoration + " " + roomLightning;
 }
+
 Enemy* ReadTextFile::getRandomEnemy(int level){
 	int chance = _random->getRandom(0, UniqueEnemies.size());
 	return UniqueEnemies.at(chance)->Clone(level);
+}
+
+Item* ReadTextFile::getRandomItem()
+{
+	int itemRandom = _random->getRandom(0, 3);
+
+	if (itemRandom == 0)
+	{
+		//do potions
+		int chance = _random->getRandom(0, potionNames->size());
+		string potionName = potionNames->at(chance);
+
+		string potionDescription = potionDescriptions->at(chance);
+
+		string potionHeal = potionHeals->at(chance);
+
+		Potion* potion = new Potion(potionName, potionDescription, atoi(potionHeal.c_str()));
+
+		return potion;
+	}
+	else if (itemRandom == 1)
+	{
+		//do torch
+		int chance = _random->getRandom(0, torchNames->size());
+		string torchName = torchNames->at(chance);
+
+		string torchValue = torchValues->at(chance);
+
+		Torch* torch = new Torch(torchName, "A lightsource", atoi(torchValue.c_str()));
+
+		return torch;
+	}
+	else
+		return nullptr;
 }

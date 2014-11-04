@@ -2,6 +2,8 @@
 #include <vector>
 #include "RandomValue.h"
 #include "Enemy.h"
+#include "Potion.h"
+#include "Torch.h"
 
 class ReadTextFile
 {
@@ -15,14 +17,28 @@ private:
 	std::vector<std::string>* randomRoomDecorationValues;
 	std::vector<std::string>* randomRoomLightningValues;
 
+	std::vector<std::string>* potionNames;
+	std::vector<std::string>* potionDescriptions;
+	std::vector<std::string>* potionHeals;
+
+	std::vector<std::string>* torchNames;
+	std::vector<std::string>* torchValues;
+
+	//std::vector<Potion*> randomPotionValues;
+	//std::vector<Torch*> randomTorchValues;
+	//std::vector<Item*> *randomPotionValues;
+	//std::vector<Item*> *randomTorchValues;
+
 	std::vector<Enemy*> UniqueEnemies;
 
 	void fillRoomVectors();
 	void fillEnemyVector();
+	void fillItemVector();
 public:
 	static ReadTextFile* getInstance();
 	std::string getRandomRoomValue();
 	Enemy* getRandomEnemy(int level);
+	Item* getRandomItem();
 	~ReadTextFile();
 };
 

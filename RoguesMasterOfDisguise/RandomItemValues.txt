@@ -1,0 +1,22 @@
+PotionName:
+Small Potion
+Medium Potion
+Large Potion
+
+PotionDescription:
+Heals you for a tiny bit
+Heals you for a decent ammount
+Heals you for a lot
+
+PotionHeal:
+10
+20
+50
+
+TorchName:
+Torch
+Lighter
+
+TorchValue:
+5
+10

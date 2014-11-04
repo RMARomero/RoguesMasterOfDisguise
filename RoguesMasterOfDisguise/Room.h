@@ -2,6 +2,7 @@
 #include <vector>
 #include "RandomValue.h"
 #include "Enemy.h"
+#include "Item.h"
 
 class Room
 {
@@ -14,6 +15,8 @@ private:
 	int _room_level;
 
 	bool _boss = false;
+
+	Item* _item;
 
 	Room* _roomNorth;
 	Room* _roomEast;

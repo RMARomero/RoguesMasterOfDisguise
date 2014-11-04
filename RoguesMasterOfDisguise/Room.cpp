@@ -14,6 +14,8 @@ Room::Room(int room_lvl)
 	_room_level = room_lvl;
 	_random = RandomValue::getInstance();
 
+	_item = ReadTextFile::getInstance()->getRandomItem();
+
 	_roomDescription = ReadTextFile::getInstance()->getRandomRoomValue();
 
 	_roomNorth = nullptr;
@@ -314,4 +316,10 @@ Room::~Room()
 	for (unsigned int i = 0; i < _enemies.size(); i++){
 		delete _enemies.at(i);
 	}
+
+	//delete item if any
+	if (_item != nullptr)
+		delete _item;
+
+	_item = nullptr;
 }
