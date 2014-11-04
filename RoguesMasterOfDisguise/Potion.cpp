@@ -23,7 +23,6 @@ Potion::~Potion()
 
 string Potion::Use(Hero* aHero)
 {
-	//int heal = stoi(m_Ammount);
 	aHero->Heal(stoi(m_Ammount));
 	return "You healed for " + m_Ammount + " ammount of health points";
 }

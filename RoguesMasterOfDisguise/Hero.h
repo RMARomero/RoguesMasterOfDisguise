@@ -23,6 +23,7 @@ private:
 	int _defense;
 public:
 	Hero();
+	void addItemToInventory(Item* item);
 	void printInventory();
 	Item* getEquippedItem();
 	void setEquippedItem(Item* equipment);

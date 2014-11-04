@@ -51,6 +51,8 @@ public:
 	bool getStairsDown();
 	bool getExit();
 
+	Item* searchRoom(int chance);
+
 	void enableBoss();
 	bool getBoss();
 

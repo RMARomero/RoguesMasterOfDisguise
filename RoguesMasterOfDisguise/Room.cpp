@@ -174,6 +174,7 @@ Room::getChoiceInformation(){
 	}
 	result += "map, ";
 	result += "inventory, ";
+	result += "search, ";
 	result += "stats, ";
 
 	if (getStairsUp() || getStairsDown()){

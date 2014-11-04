@@ -58,6 +58,9 @@
     <Text Include="RandomRoomValues.txt">
       <Filter>Resource Files</Filter>
     </Text>
+    <Text Include="RandomItemValues.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -111,11 +114,11 @@
     <ClInclude Include="Potion.h">
       <Filter>Header Files\Entity\Item</Filter>
     </ClInclude>
-    <ClInclude Include="InventoryState.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Torch.h">
       <Filter>Header Files\Entity\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="InventoryState.h">
+      <Filter>Header Files\GameState</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -170,11 +173,11 @@
     <ClCompile Include="Potion.cpp">
       <Filter>Source Files\Entity\Item</Filter>
     </ClCompile>
-    <ClCompile Include="InventoryState.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Torch.cpp">
       <Filter>Source Files\Entity\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="InventoryState.cpp">
+      <Filter>Source Files\GameState</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

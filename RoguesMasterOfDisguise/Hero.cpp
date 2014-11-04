@@ -12,12 +12,7 @@ using namespace std;
 
 Hero::Hero()
 {
-	//_inventory = new vector<Item*>();
-	//test inventory
-	_inventory.push_back(new Potion("Mighty Potion", "A very potent potion that heals you for over 100 hp.", 100));
-	_inventory.push_back(new Potion("Mystery Potion", "A mystery potion with unkown effects. Use at your own risk.", 50));
-	_inventory.push_back(new Potion("Lesser Potion", "A common potion that heals you for 10 hp.", 10));
-	_equipedItem = new Torch(); //remove this here? Give hero always a torch?
+	_equipedItem = nullptr; //remove this here? Give hero always a torch?
 	_name = "";
 	_level = 1;
 	_xp = 0;
@@ -29,6 +24,11 @@ Hero::Hero()
 	_baseAttack = 2;
 	_baseDefense = 1;
 	_baseHealth = 2;
+}
+
+void Hero::addItemToInventory(Item* item)
+{
+	_inventory.push_back(item);
 }
 
 void Hero::printInventory()
@@ -137,7 +137,9 @@ Hero::~Hero()
 	for (unsigned int i = 0; i < _inventory.size(); i++)
 	{
 		delete _inventory[i];
+		_inventory[i] = nullptr;
 	}
 
 	delete _equipedItem;
+	_equipedItem = nullptr;
 }

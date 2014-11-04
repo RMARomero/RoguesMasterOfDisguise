@@ -32,14 +32,18 @@ ChoiceState::processInput(string input){
 		_levelManager->GetCurrentMap()->PrintMap();
 		result = _levelManager->GetCurrentMap()->GetCurrentRoom()->getChoiceInformation();
 	}
-	else if (input == "stats"){
-		result = _hero->getStats();
-		result += _levelManager->GetCurrentMap()->GetCurrentRoom()->getChoiceInformation();
-	}
 	else if (input == "inventory"){
 		result += "Let's have a look...";
 		_hero->printInventory();
 		_controller->setCurrentGameState(_controller->INVENTORY_STATE);
+	}
+	else if (input == "search") {
+		result += "I might be able to find something usefull...";
+		//make new state Search
+	}
+	else if (input == "stats"){
+		result = _hero->getStats();
+		result += _levelManager->GetCurrentMap()->GetCurrentRoom()->getChoiceInformation();
 	}
 	else if (input == "rest"){
 		if (_levelManager->GetCurrentMap()->GetCurrentRoom()->getEnemies()->size() <= 0){
