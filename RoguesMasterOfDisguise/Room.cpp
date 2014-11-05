@@ -269,6 +269,27 @@ Room::getExit(){
 	return _exit;
 }
 
+void Room::setItemPointerToNull()
+{
+	_item = nullptr;
+}
+
+Item* Room::searchRoom(unsigned int chance)
+{
+	if (chance < 15)
+	{
+		//traps 
+		//what to return :S
+		return nullptr;
+	}
+	else if (chance > MIN_FIND_PROBABILITY && chance < MAX_FIND_PROBABILITY)
+	{
+		return _item;
+	}
+	else
+		return nullptr;
+}
+
 string 
 Room::getMoveChoices(){
 

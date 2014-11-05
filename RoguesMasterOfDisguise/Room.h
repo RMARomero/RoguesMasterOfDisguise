@@ -4,6 +4,9 @@
 #include "Enemy.h"
 #include "Item.h"
 
+#define MAX_FIND_PROBABILITY 65
+#define MIN_FIND_PROBABILITY 15
+
 class Room
 {
 private:
@@ -51,7 +54,8 @@ public:
 	bool getStairsDown();
 	bool getExit();
 
-	Item* searchRoom(int chance);
+	void setItemPointerToNull();
+	Item* searchRoom(unsigned int chance);
 
 	void enableBoss();
 	bool getBoss();
