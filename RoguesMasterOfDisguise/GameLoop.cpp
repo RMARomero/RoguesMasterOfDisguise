@@ -34,6 +34,13 @@ GameLoop::getInput()
 		result = result.substr(0, result.size() - ext.size());
 		_playing = false;
 		result += "\n\n--------------------------\nAnd so the journey ends...\n--------------------------\n\n";
+		result += "\n";
+		result += "\n";
+		result += "\n\Press any key to continue...\n";
+
+		cout << result;
+		result = "";
+		getline(cin, input);
 	}
 
 	

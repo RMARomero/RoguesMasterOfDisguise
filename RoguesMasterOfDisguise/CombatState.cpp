@@ -90,8 +90,12 @@ CombatState::processInput(string input){
 	}
 
 	if (enemyAttack){
-		result += Fight(false, *_levelManager->GetCurrentMap()->GetCurrentRoom()->getEnemies(), _hero) + "\n";
-		result += _levelManager->GetCurrentMap()->GetCurrentRoom()->getAttackChoices();
+		result += Fight(false, *_levelManager->GetCurrentMap()->GetCurrentRoom()->getEnemies(), _hero);
+
+		const std::string ext("___exit___");
+		if (!(result.size() >= ext.size() && result.substr(result.size() - ext.size()) == "___exit___")){
+			result += "\n" + _levelManager->GetCurrentMap()->GetCurrentRoom()->getAttackChoices();
+		}
 	}
 
 
@@ -102,7 +106,15 @@ CombatState::processInput(string input){
 
 string CombatState::Fight(bool playerTurn, std::vector<Enemy*>& enemies, Hero* player){
 	string result = "";
+
+	if (enemies.size() <= 0){
+		//error
+		return "Something went ";
+	}
+
 	if (playerTurn){
+
+		/* // AOE:
 		vector< Enemy* >::iterator it = enemies.begin();
 		while (it != enemies.end()) {
 			Enemy* enemy = (*it);
@@ -123,17 +135,42 @@ string CombatState::Fight(bool playerTurn, std::vector<Enemy*>& enemies, Hero* p
 				++it;
 			}
 		}
+		*/
+
+		int position = RandomValue::getInstance()->getRandom(0, enemies.size());
+
+		Enemy* enemy = enemies.at(position);
+		int damage = enemy->DoDamage(player->getCurrentAttack());
+		result += ("You attack " + enemy->GetName() + ", dealing " + to_string(damage) + " damage.");
+
+		if (!enemy->IsAlive()){
+			bool levelUp = player->addExperience(enemy->GetExperienceOnKill());
+			result += "\nYou killed " + enemy->GetName() + ". You gained " + to_string(enemy->GetExperienceOnKill()) + " experience!\n";
+			if (levelUp){
+				result += "Congratulations! You are now level " + to_string(player->getLevel()) + " !\n";
+			}
+			enemies.erase(std::remove(enemies.begin(), enemies.end(), enemy), enemies.end());
+		}
+		else{
+			result += " " + enemy->GetBattleStatus() + "\n";
+		}
+		
+
 	}
 	else{
-		for (Enemy* enemy : enemies){
-			int damage = player->DoDamage(enemy->getCurrentAttack());
-			result += (enemy->GetName() + " attacks you, dealing " + to_string(damage) + " damage.");
-			if (!player->IsAlive()){
-				result += "\nYou died. You weren't able to save... them...___exit___";
-				break;
-			}
+
+		int position = RandomValue::getInstance()->getRandom(0, enemies.size());
+
+		Enemy* enemy = enemies.at(position);
+		int damage = player->DoDamage(enemy->getCurrentAttack());
+		result += (enemy->GetName() + " attacks you, dealing " + to_string(damage) + " damage.");
+		if (!player->IsAlive()){
+			result += "\nYou died. You weren't able to save... them... ___exit___";
+		}
+		else{
 			result += " You have " + to_string(player->getCurrentHealth()) + " health left. \n";
 		}
+		
 	}
 
 	return result;
