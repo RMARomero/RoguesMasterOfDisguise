@@ -13,8 +13,8 @@ using namespace std;
 Hero::Hero()
 {
 	_inventory = new vector<Item*>();
-	_inventory->push_back(new Potion("lol", "foo", 5));
-	_equipedItem = nullptr; //remove this here? Give hero always a torch?
+	_inventory->push_back(new Potion("Starter Potion", "Heals you for a tiny bit", 3));
+	_equipedItem = nullptr; 
 	_name = "";
 	_level = 1;
 	_xp = 0;
