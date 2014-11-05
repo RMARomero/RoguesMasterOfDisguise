@@ -14,42 +14,43 @@ Map::Map(){
 
 Map::Map(int map_level, int max_map_level)
 {
-	
+
 	_random = RandomValue::getInstance();
 	_map_level = map_level;
 	_max_map_level = max_map_level;
 
 	int current_length = 0;
-	int max_length = 100;
+	int max_length = 10;
 	newRoomChance = 40;
 
-	int x = _random->getRandom(0, (matrixWidth-1));
-	int y = _random->getRandom(0, (matrixHeight-1));
+	int x = _random->getRandom(0, (matrixWidth - 1));
+	int y = _random->getRandom(0, (matrixHeight - 1));
 	_startingRoom = new Room(_map_level);
 	matrix[x][y] = _startingRoom;
 	CreateRoom(_startingRoom, x, y, true, current_length, max_length);
 	if (map_level == 1){
 		_startingRoom->enableExit();
-	}else{
+	}
+	else{
 		_startingRoom->enableStairsUp();
 	}
-	
+
 	SetCurrentRoom(_startingRoom);
 }
 
-Room* 
+Room*
 Map::GetCurrentRoom(){
 	return _currentRoom;
 }
 
-void 
+void
 Map::SetCurrentRoom(Room* room){
 	_currentRoom = room;
 }
 
 
 //create a random item here?
-void 
+void
 Map::CreateRoom(Room* room, int x, int y, bool mainRoad, int current_length, int max_length){
 
 	if (x < 0 || x >= matrixWidth || y < 0 || y >= matrixHeight){
@@ -104,8 +105,8 @@ Map::CreateRoom(Room* room, int x, int y, bool mainRoad, int current_length, int
 		}
 		return;
 	}
-	
-	
+
+
 	bool pathNorthMain = false;
 	bool pathEastMain = false;
 	bool pathSouthMain = false;
@@ -116,13 +117,13 @@ Map::CreateRoom(Room* room, int x, int y, bool mainRoad, int current_length, int
 		while (!mainRoadSecured){
 			int randomNr = _random->getRandom(1, 4);
 			switch (randomNr){
-			case 1: 
+			case 1:
 				if (pathNorthValid){
 					pathNorthMain = true;
 					mainRoadSecured = true;
 				}
 				break;
-			case 2: 
+			case 2:
 				if (pathEastValid){
 					pathEastMain = true;
 					mainRoadSecured = true;
@@ -143,7 +144,7 @@ Map::CreateRoom(Room* room, int x, int y, bool mainRoad, int current_length, int
 			}
 		}
 	}
-	
+
 
 	int randomNr = _random->getRandom(0, 100);
 	bool newNorthRoom = false;
@@ -213,7 +214,7 @@ Map::CreateRoom(Room* room, int x, int y, bool mainRoad, int current_length, int
 
 }
 
-void 
+void
 Map::PrintMap(){
 
 	cout << endl << endl << "Dungeon Map:" << endl;
@@ -245,7 +246,7 @@ Map::PrintMap(){
 			}
 
 			if (matrix[j][i] != nullptr){
-				if ((matrix[j][i]->getRoomEast() != nullptr) && (matrix[j][i]->getVisited() || matrix[j+1][i]->getVisited())){
+				if ((matrix[j][i]->getRoomEast() != nullptr) && (matrix[j][i]->getVisited() || matrix[j + 1][i]->getVisited())){
 					cout << "-";
 				}
 				else{
@@ -260,7 +261,7 @@ Map::PrintMap(){
 		for (int j = 0; j < matrixWidth; j++){
 
 			if (matrix[j][i] != nullptr){
-				if (matrix[j][i]->getRoomSouth() != nullptr && (matrix[j][i]->getVisited() || matrix[j][i+1]->getVisited())){
+				if (matrix[j][i]->getRoomSouth() != nullptr && (matrix[j][i]->getVisited() || matrix[j][i + 1]->getVisited())){
 					cout << "| ";
 				}
 				else{

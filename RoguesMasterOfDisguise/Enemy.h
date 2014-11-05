@@ -10,8 +10,10 @@ protected:
 	int _attack;
 	int _defense;
 	int _experienceOnKill;
+	int _maxDungeonLevel;
+	int _minDungeonLevel;
 public:
-	Enemy(std::string name, int level, int healthPerLevel, int attackPerLevel, int defensePerLevel, int experienceOnKill);
+	Enemy(std::string name, int level, int healthPerLevel, int attackPerLevel, int defensePerLevel, int experienceOnKill, int minDungeonLevel, int maxDungeonLevel);
 	std::string GetName();
 	int GetLevel();
 	std::string GetEnemyInfo();
@@ -20,6 +22,10 @@ public:
 	int DoDamage(int attack);
 	int GetExperienceOnKill();
 	bool IsAlive();
+
+	int getMaxDungeonLevel();
+	int getMinDungeonLevel();
+
 	Enemy* Clone(int level);
 	~Enemy();
 };

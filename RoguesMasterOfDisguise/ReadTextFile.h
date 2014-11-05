@@ -29,15 +29,18 @@ private:
 	//std::vector<Item*> *randomPotionValues;
 	//std::vector<Item*> *randomTorchValues;
 
-	std::vector<Enemy*> UniqueEnemies;
+	std::vector<Enemy*>* UniqueEnemies;
+	std::vector<Enemy*>* UniqueBosses;
 
 	void fillRoomVectors();
 	void fillEnemyVector();
 	void fillItemVector();
+
 public:
 	static ReadTextFile* getInstance();
 	std::string getRandomRoomValue();
 	Enemy* getRandomEnemy(int level);
+	Enemy* getRandomBoss();
 	Item* getRandomItem();
 	~ReadTextFile();
 };
