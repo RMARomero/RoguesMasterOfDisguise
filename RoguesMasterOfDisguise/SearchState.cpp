@@ -3,9 +3,11 @@
 
 using namespace std;
 
-
 SearchState::SearchState(Hero *player, LevelManager *lvlManager, Controller* controller)
 {
+	_hero = player;
+	_levelManager = lvlManager;
+	_controller = controller;
 }
 
 

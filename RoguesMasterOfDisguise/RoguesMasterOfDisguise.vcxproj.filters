@@ -121,7 +121,7 @@
       <Filter>Header Files\GameState</Filter>
     </ClInclude>
     <ClInclude Include="SearchState.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\GameState</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -183,7 +183,7 @@
       <Filter>Source Files\GameState</Filter>
     </ClCompile>
     <ClCompile Include="SearchState.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\GameState</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
