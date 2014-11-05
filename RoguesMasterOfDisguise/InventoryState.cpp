@@ -20,7 +20,11 @@ string InventoryState::processInput(string input)
 {
 	string result = "";
 
-	if (!_hero->getInventory().empty())
+	if (input == "inventory" && !_hero->getInventory()->empty())
+	{
+		result += "\nSelect which item you would like to use.\n";	
+	}
+	else if (!_hero->getInventory()->empty())
 	{
 		try
 		{
@@ -32,11 +36,16 @@ string InventoryState::processInput(string input)
 				throw std::bad_cast();
 			}
 
-			if (i > 0 && i <= _hero->getInventory().size())
+			if (i > 0 && i <= _hero->getInventory()->size())
 			{
 				i--; //index - 1 to get the right item
-				string res = _hero->getInventory().at(i)->Use(_hero);
-				//_hero->getInventory().erase( _hero->getInventory().begin() + i ); //exception range out of index 
+				Item* item = _hero->getInventory()->at(i);
+				string res = item->Use(_hero);
+				_hero->getInventory()->erase(_hero->getInventory()->begin() + i);
+
+				//memory cleanup
+				delete item;
+				item = nullptr;
 
 				_controller->setCurrentGameState(_controller->CHOICE_STATE);
 
@@ -66,6 +75,6 @@ string InventoryState::processInput(string input)
 		_controller->setCurrentGameState(_controller->CHOICE_STATE);
 		result += _levelManager->GetCurrentMap()->GetCurrentRoom()->getChoiceInformation();
 	}
-	
+
 	return result;
 }

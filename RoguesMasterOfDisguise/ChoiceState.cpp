@@ -33,9 +33,10 @@ ChoiceState::processInput(string input){
 		result = _levelManager->GetCurrentMap()->GetCurrentRoom()->getChoiceInformation();
 	}
 	else if (input == "inventory"){
-		result += "Let's have a look...";
-		_hero->printInventory();
+		result += "Let's have a look...\n";
+		result += _hero->printInventory();
 		_controller->setCurrentGameState(_controller->INVENTORY_STATE);
+		result += _controller->getCurrentGameState()->processInput(input);
 	}
 	else if (input == "search") {
 		result += "I might be able to find something usefull...";

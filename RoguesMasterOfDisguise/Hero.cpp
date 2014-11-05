@@ -12,6 +12,8 @@ using namespace std;
 
 Hero::Hero()
 {
+	_inventory = new vector<Item*>();
+	_inventory->push_back(new Potion("lol", "foo", 5));
 	_equipedItem = nullptr; //remove this here? Give hero always a torch?
 	_name = "";
 	_level = 1;
@@ -28,19 +30,23 @@ Hero::Hero()
 
 void Hero::addItemToInventory(Item* item)
 {
-	_inventory.push_back(item);
+	_inventory->push_back(item);
 }
 
-void Hero::printInventory()
+string Hero::printInventory()
 {
+	string result = "\n";
 	unsigned int slot = 1;
-	for (vector<Item*>::iterator it = _inventory.begin(); it != _inventory.end(); it++)
+	for (vector<Item*>::iterator it = _inventory->begin(); it != _inventory->end(); it++)
 	{
 		Item* ptrItem = *it;
-		cout << endl;
-		cout << slot << "." << ptrItem->getName() << ": " << ptrItem->getDescription() << endl;
+		//cout << endl;
+		//cout << slot << "." << ptrItem->getName() << ": " << ptrItem->getDescription() << endl;
+		result += to_string(slot) + "." + ptrItem->getName() + ": " + ptrItem->getDescription() + "\n";
 		slot++;
 	}
+
+	return result;
 }
 
 Item* Hero::getEquippedItem()
@@ -53,7 +59,7 @@ void Hero::setEquippedItem(Item* equipment)
 	_equipedItem = equipment;
 }
 
-vector<Item*> Hero::getInventory()
+vector<Item*>* Hero::getInventory()
 {
 	return _inventory;
 }
@@ -134,11 +140,20 @@ int Hero::getLevel(){
 
 Hero::~Hero()
 {
-	for (unsigned int i = 0; i < _inventory.size(); i++)
+	for (vector<Item*>::iterator it = _inventory->begin(); it != _inventory->end(); it++)
+	{
+		delete (*it);
+		*it = nullptr;
+	}
+
+	/*for (unsigned int i = 0; i < _inventory->size(); i++)
 	{
 		delete _inventory[i];
 		_inventory[i] = nullptr;
-	}
+	}*/
+
+	delete _inventory;
+	_inventory = nullptr;
 
 	delete _equipedItem;
 	_equipedItem = nullptr;

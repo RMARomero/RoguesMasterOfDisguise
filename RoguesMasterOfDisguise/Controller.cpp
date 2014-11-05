@@ -47,9 +47,9 @@ Controller::setCurrentGameState(int GameState){
 		_currentGameState = _gameStateInventory;
 }
 
-//GameState* Controller::getCurrentGameState(){
-//	return _currentGameState;
-//}
+GameState* Controller::getCurrentGameState(){
+	return _currentGameState;
+}
 
 Controller::~Controller()
 {

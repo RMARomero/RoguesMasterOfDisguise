@@ -7,7 +7,7 @@ class Item;
 class Hero
 {
 private:
-	std::vector<Item*> _inventory;
+	std::vector<Item*>* _inventory;
 	Item* _equipedItem;
 	std::string _name;
 	int _level;
@@ -24,10 +24,10 @@ private:
 public:
 	Hero();
 	void addItemToInventory(Item* item);
-	void printInventory();
+	std::string printInventory();
 	Item* getEquippedItem();
 	void setEquippedItem(Item* equipment);
-	std::vector<Item*> getInventory();
+	std::vector<Item*>* getInventory();
 	void setName(std::string name);
 	std::string getName();
 	std::string getStats();
