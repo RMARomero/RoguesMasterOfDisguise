@@ -40,7 +40,8 @@ ChoiceState::processInput(string input){
 	}
 	else if (input == "search") {
 		result += "I might be able to find something usefull...";
-		//make new state Search
+		_controller->setCurrentGameState(_controller->SEARCH_STATE);
+		result += _controller->getCurrentGameState()->processInput(input);
 	}
 	else if (input == "stats"){
 		result = _hero->getStats();
