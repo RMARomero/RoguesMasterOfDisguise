@@ -32,6 +32,7 @@ private:
 
 	std::vector<Enemy*> _enemies;
 	void spawnEnemies();
+	void deleteEnemies();
 public:
 	Room(int room_level);
 	void setRoomNorth(Room* room);

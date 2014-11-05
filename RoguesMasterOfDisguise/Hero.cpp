@@ -13,8 +13,8 @@ using namespace std;
 Hero::Hero()
 {
 	_inventory = new vector<Item*>();
-	_inventory->push_back(new Potion("Starter Potion", "Heals you for a tiny bit", 3));
-	_equipedItem = nullptr;
+	_inventory->push_back(new Potion("lol", "foo", 5));
+	_equipedItem = nullptr; //remove this here? Give hero always a torch?
 	_name = "";
 	_level = 1;
 	_xp = 0;
@@ -64,22 +64,22 @@ vector<Item*>* Hero::getInventory()
 	return _inventory;
 }
 
-void 
+void
 Hero::setName(string name){
 	_name = name;
 }
 
-string 
+string
 Hero::getName(){
 	return _name;
 }
 
 string Hero::getStats(){
 	return _name + "'s stats:"
-		+ "\n  Level: " + to_string(_level) 
-		+ "\n  Experience: " + to_string(_xp) 
+		+ "\n  Level: " + to_string(_level)
+		+ "\n  Experience: " + to_string(_xp)
 		+ "\n  Health: " + to_string(_currentHealth)
-		+ "\n  Attack: " + to_string(_attack) 
+		+ "\n  Attack: " + to_string(_attack)
 		+ "\n  Defense: " + to_string(_defense);
 }
 
@@ -113,7 +113,7 @@ void Hero::Rest(){
 	_currentHealth = _maxHealth;
 }
 
-bool 
+bool
 Hero::IsAlive(){
 	return (_currentHealth <= 0) ? false : true;
 }
@@ -122,8 +122,9 @@ Hero::IsAlive(){
 bool Hero::addExperience(int experience){
 	_xp += experience;
 
-	int supposed_level = 1 + (int)(0.3 * sqrt(_xp));
-	if (_level < supposed_level){
+	int supposed_level = 1 + (int)(0.1 * sqrt(_xp));
+	int levelCap = 100; // Level cap = 100 = (bij 0.3 = 108.900 xp, 0.1 = 980.100 xp);
+	if (_level < supposed_level && _level < levelCap){
 		_level = supposed_level;
 		_maxHealth += _baseHealth;
 		_currentHealth += _baseHealth;
@@ -148,8 +149,8 @@ Hero::~Hero()
 
 	/*for (unsigned int i = 0; i < _inventory->size(); i++)
 	{
-		delete _inventory[i];
-		_inventory[i] = nullptr;
+	delete _inventory[i];
+	_inventory[i] = nullptr;
 	}*/
 
 	delete _inventory;

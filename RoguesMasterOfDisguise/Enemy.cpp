@@ -4,7 +4,7 @@
 using namespace std;
 
 
-Enemy::Enemy(string name, int level, int healthPerLevel, int attackPerLevel, int defensePerLevel, int experienceOnKill){
+Enemy::Enemy(string name, int level, int healthPerLevel, int attackPerLevel, int defensePerLevel, int experienceOnKill, int minDungeonLevel, int maxDungeonLevel){
 	_name = name;
 	_level = level;
 	_maxHealth = level * healthPerLevel;
@@ -12,6 +12,8 @@ Enemy::Enemy(string name, int level, int healthPerLevel, int attackPerLevel, int
 	_attack = level * attackPerLevel;
 	_defense = level * defensePerLevel;
 	_experienceOnKill = experienceOnKill * level;
+	_minDungeonLevel = minDungeonLevel;
+	_maxDungeonLevel = maxDungeonLevel;
 }
 Enemy::~Enemy(){
 
@@ -74,7 +76,13 @@ int Enemy::GetExperienceOnKill(){
 	return _experienceOnKill;
 }
 
+int Enemy::getMaxDungeonLevel(){
+	return _maxDungeonLevel;
+}
+int Enemy::getMinDungeonLevel(){
+	return _minDungeonLevel;
+}
 
 Enemy* Enemy::Clone(int level){
-	return new Enemy(_name, level, _maxHealth, _attack, _defense, _experienceOnKill);
+	return new Enemy(_name, level, _maxHealth, _attack, _defense, _experienceOnKill, _minDungeonLevel, _maxDungeonLevel);
 }

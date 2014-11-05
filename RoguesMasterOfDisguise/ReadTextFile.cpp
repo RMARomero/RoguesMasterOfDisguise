@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include <fstream>
 #include "ReadTextFile.h"
+#include <sstream>
 
 using namespace std;
 
@@ -20,6 +21,9 @@ ReadTextFile::ReadTextFile()
 	torchNames = new vector<string>();
 	torchValues = new vector<string>();
 
+	UniqueEnemies = new vector<Enemy*>();
+	UniqueBosses = new vector<Enemy*>();
+
 	fillRoomVectors();
 	fillEnemyVector();
 	fillItemVector();
@@ -38,9 +42,15 @@ ReadTextFile::~ReadTextFile()
 	//delete _instance;
 
 	//delete _enemies;
-	for (unsigned int i = 0; i < UniqueEnemies.size(); i++){
-		delete UniqueEnemies.at(i);
+	for (unsigned int i = 0; i < UniqueEnemies->size(); i++){
+		delete UniqueEnemies->at(i);
 	}
+	delete UniqueEnemies;
+	for (unsigned int i = 0; i < UniqueBosses->size(); i++){
+		delete UniqueBosses->at(i);
+	}
+	delete UniqueBosses;
+
 	delete randomRoomSizeValues;
 	delete randomRoomConditionValues;
 	delete randomRoomDecorationValues;
@@ -96,17 +106,48 @@ void ReadTextFile::fillEnemyVector(){
 	int attackPerLevel = 0;
 	int defensePerLevel = 0;
 	int experienceOnKill = 0;
-	// input file stream, opent textfile voor lezen
+	int minDungeonLevel = 0; //Minimum dungeon level
+	int maxDungeonLevel = 0; //Minimum dungeon level
+
 	ifstream input_file(randomEnemyValues);
 
-	while (input_file >> name >> healthPerLevel >> attackPerLevel >> defensePerLevel >> experienceOnKill) {
-		string result = name + to_string(healthPerLevel) + to_string(attackPerLevel) + to_string(defensePerLevel) + to_string(experienceOnKill);
-		UniqueEnemies.push_back(new Enemy(name, 1, healthPerLevel, attackPerLevel, defensePerLevel, experienceOnKill));
+
+	vector<Enemy*>* currentVector = UniqueEnemies;
+
+	while (getline(input_file, line)){
+		if ((line[0] == '/') &&
+			(line[1] == '/')){
+			continue;
+		}
+
+		if (line == ""){
+
+		}
+		else if (line == "Normal:"){
+			currentVector = UniqueEnemies;
+		}
+		else if (line == "Boss:"){
+			currentVector = UniqueBosses;
+		}
+		else{
+			istringstream iss(line);
+			vector<string> tokens{ istream_iterator<string>{iss}, istream_iterator<string>{} };
+			name = tokens.at(0);
+			healthPerLevel = atoi(tokens.at(1).c_str());
+			attackPerLevel = atoi(tokens.at(2).c_str());
+			defensePerLevel = atoi(tokens.at(3).c_str());
+			experienceOnKill = atoi(tokens.at(4).c_str());
+			minDungeonLevel = atoi(tokens.at(5).c_str());
+			maxDungeonLevel = atoi(tokens.at(6).c_str());
+
+			currentVector->push_back(new Enemy(name, 1, healthPerLevel, attackPerLevel, defensePerLevel, experienceOnKill, minDungeonLevel, maxDungeonLevel));
+		}
 	}
-	//Enemy* enemy = ;
+
+
 
 }
- 
+
 void ReadTextFile::fillItemVector() {
 	const string randomItemValues("RandomItemValues.txt");
 	string line;
@@ -115,7 +156,7 @@ void ReadTextFile::fillItemVector() {
 
 	vector<string>* currentVector = potionNames;
 
-	while (getline(input_file, line)) 
+	while (getline(input_file, line))
 	{
 		if (line == "")
 		{
@@ -165,8 +206,21 @@ string ReadTextFile::getRandomRoomValue(){
 }
 
 Enemy* ReadTextFile::getRandomEnemy(int level){
-	int chance = _random->getRandom(0, UniqueEnemies.size());
-	return UniqueEnemies.at(chance)->Clone(level);
+	vector<Enemy*> tempEnemyList;
+
+	for (Enemy* enemy : *UniqueEnemies){
+		if (enemy->getMinDungeonLevel() <= level && enemy->getMaxDungeonLevel() >= level){
+			tempEnemyList.push_back(enemy);
+		}
+	}
+
+	int chance = _random->getRandom(0, tempEnemyList.size());
+	return tempEnemyList.at(chance)->Clone(level);
+}
+
+Enemy* ReadTextFile::getRandomBoss(){
+	int chance = _random->getRandom(0, UniqueBosses->size());
+	return UniqueBosses->at(chance)->Clone(11); /* 11, since they should be stronger then lvl 10 mobs */
 }
 
 Item* ReadTextFile::getRandomItem()
