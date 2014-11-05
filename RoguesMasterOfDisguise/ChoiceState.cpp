@@ -19,7 +19,7 @@ string
 ChoiceState::processInput(string input){
 	string result = "";
 	Room* nextRoom = nullptr;
-
+	
 	if (input == "fight"){
 		_controller->setCurrentGameState(_controller->COMBAT_STATE);
 		result = _levelManager->GetCurrentMap()->GetCurrentRoom()->getAttackChoices();
@@ -57,8 +57,8 @@ ChoiceState::processInput(string input){
 		result += _levelManager->GetCurrentMap()->GetCurrentRoom()->getChoiceInformation();
 	}
 
-	/* Switch Room: */
-	if (input == "north"){
+	/* Switch Room: (part one)*/
+	else if (input == "north"){
 		nextRoom = _levelManager->GetCurrentMap()->GetCurrentRoom()->getRoomNorth();
 	}
 	else if (input == "east"){
@@ -70,13 +70,9 @@ ChoiceState::processInput(string input){
 	else if (input == "west"){
 		nextRoom = _levelManager->GetCurrentMap()->GetCurrentRoom()->getRoomWest();
 	}
-	if (nextRoom != nullptr){
-		_levelManager->GetCurrentMap()->SetCurrentRoom(nextRoom);
-		result = _levelManager->GetCurrentMap()->GetCurrentRoom()->toString();
-	}
 
 	/* Switch Maps */
-	if (input == "stairs"){
+	else if (input == "stairs"){
 		if (_levelManager->GetCurrentMap()->GetCurrentRoom()->getStairsUp()){
 			_levelManager->DecreaseCurrentLevel();
 		}
@@ -90,7 +86,16 @@ ChoiceState::processInput(string input){
 			result = "___exit___";
 		}
 	}
+	else{
+		result += "Invalid input."+ _levelManager->GetCurrentMap()->GetCurrentRoom()->getChoiceInformation();
+	}
 
+
+	/* Switch Room: (part two) */
+	if (nextRoom != nullptr){
+		_levelManager->GetCurrentMap()->SetCurrentRoom(nextRoom);
+		result = _levelManager->GetCurrentMap()->GetCurrentRoom()->toString();
+	}
 
 	return result;
 }

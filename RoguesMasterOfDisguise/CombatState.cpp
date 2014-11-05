@@ -19,6 +19,7 @@ CombatState::processInput(string input){
 	string result = "";
 	Room* nextRoom = nullptr;
 	bool enemyAttack = false;
+	bool fleeAttempt = false;
 
 	if (input == "attack"){
 		result = Fight(true, *_levelManager->GetCurrentMap()->GetCurrentRoom()->getEnemies(), _hero);
@@ -32,7 +33,7 @@ CombatState::processInput(string input){
 			result += _levelManager->GetCurrentMap()->GetCurrentRoom()->getChoiceInformation();
 		}
 	}
-	if (input == "flee"){
+	else if (input == "flee"){
 		result = "Which way?\n\n";
 		result += _levelManager->GetCurrentMap()->GetCurrentRoom()->getMoveChoices();
 	}
@@ -44,14 +45,13 @@ CombatState::processInput(string input){
 		_controller->setCurrentGameState(_controller->INVENTORY_STATE);
 	}
 
-	if (input == "stats"){
+	else if (input == "stats"){
 		result = _hero->getStats();
 		result += "\n\n"+_levelManager->GetCurrentMap()->GetCurrentRoom()->getAttackChoices();
 	}
 
 	/* Switch Room: */
-	bool fleeAttempt = false;
-	if (input == "north"){
+	else if (input == "north"){
 		nextRoom = _levelManager->GetCurrentMap()->GetCurrentRoom()->getRoomNorth();
 		fleeAttempt = true;
 	}
@@ -67,6 +67,10 @@ CombatState::processInput(string input){
 		nextRoom = _levelManager->GetCurrentMap()->GetCurrentRoom()->getRoomWest();
 		fleeAttempt = true;
 	}
+	else{
+		result += "Invalid input." + _levelManager->GetCurrentMap()->GetCurrentRoom()->getAttackChoices();
+	}
+
 	if (fleeAttempt){
 		if (nextRoom != nullptr){
 			int chance = RandomValue::getInstance()->getRandom(0, 100);
