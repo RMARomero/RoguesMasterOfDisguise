@@ -26,7 +26,7 @@ Room::Room(int room_lvl)
 	spawnEnemies();
 }
 
-string
+string 
 Room::toString(){
 	string result = "Description: ";
 
@@ -40,47 +40,47 @@ Room::toString(){
 	return result;
 }
 
-void
+void 
 Room::setRoomNorth(Room* room){
 	_roomNorth = room;
 }
 
-void
+void 
 Room::setRoomEast(Room* room){
 	_roomEast = room;
 }
-void
+void 
 Room::setRoomSouth(Room* room){
 	_roomSouth = room;
 }
 
-void
+void 
 Room::setRoomWest(Room* room){
 	_roomWest = room;
 }
 
-Room*
+Room* 
 Room::getRoomNorth(){
 	return _roomNorth;
 }
 
-Room*
+Room* 
 Room::getRoomEast(){
 	return _roomEast;
 }
 
-Room*
+Room* 
 Room::getRoomSouth(){
 	return _roomSouth;
 }
 
-Room*
+Room* 
 Room::getRoomWest(){
 	return _roomWest;
 }
 
 
-string
+string 
 Room::getExitInformation(){
 	string result = "\n\nExits: ";
 	vector<string> doorWays;
@@ -141,7 +141,7 @@ Room::getEnemyInformation(){
 
 	/*for (vector<Enemy*>::iterator it = _enemies->begin(); it != _enemies->end(); it++)
 	{
-	result += "\n"+ it
+		result += "\n"+ it
 	}*/
 
 	for (unsigned int i = 0; i < _enemies.size(); i++)
@@ -153,7 +153,7 @@ Room::getEnemyInformation(){
 
 }
 
-string
+string 
 Room::getVisitedInformation(){
 	if (_visited){
 		return "You have been here before. ";
@@ -161,7 +161,7 @@ Room::getVisitedInformation(){
 	return "";
 }
 
-string
+string 
 Room::getChoiceInformation(){
 	string result = "\n\n{";
 	if (_enemies.size() > 0){
@@ -192,7 +192,7 @@ Room::getChoiceInformation(){
 	return result;
 }
 
-void
+void 
 Room::spawnEnemies(){
 	int chance = _random->getRandom(0, 100);
 	if (chance > 25){
@@ -229,47 +229,68 @@ std::vector<Enemy*>* Room::getEnemies(){
 }
 
 
-void
+void 
 Room::setVisited(){
 	_visited = true;
 }
 
-bool
+bool 
 Room::getVisited(){
 	return _visited;
 }
 
-void
+void 
 Room::enableStairsUp(){
 	_stairsUp = true;
 }
 
-void
+void 
 Room::enableStairsDown(){
 	_stairsDown = true;
 }
 
-void
+void 
 Room::enableExit(){
 	_exit = true;
 }
 
-bool
+bool 
 Room::getStairsUp(){
 	return _stairsUp;
 }
 
-bool
+bool 
 Room::getStairsDown(){
 	return _stairsDown;
 }
 
-bool
+bool 
 Room::getExit(){
 	return _exit;
 }
 
-string
+void Room::setItemPointerToNull()
+{
+	_item = nullptr;
+}
+
+Item* Room::searchRoom(unsigned int chance)
+{
+	if (chance < 15)
+	{
+		//traps 
+		//what to return :S
+		return nullptr;
+	}
+	else if (chance > MIN_FIND_PROBABILITY && chance < MAX_FIND_PROBABILITY)
+	{
+		return _item;
+	}
+	else
+		return nullptr;
+}
+
+string 
 Room::getMoveChoices(){
 
 	string result = "{";
@@ -285,7 +306,7 @@ Room::getMoveChoices(){
 	if (_roomWest != nullptr){
 		result += "west, ";
 	}
-
+	
 	if (result.size() > 1){
 		result.resize(result.size() - 2);
 	}
@@ -301,14 +322,14 @@ std::string Room::getAttackChoices(){
 	return "{attack, flee, inventory, stats}";
 }
 
-void
+void 
 Room::enableBoss(){
 	_boss = true;
 	deleteEnemies();
 	_enemies.push_back(ReadTextFile::getInstance()->getRandomBoss());
 }
 
-bool
+bool 
 Room::getBoss(){
 	return _boss;
 }
