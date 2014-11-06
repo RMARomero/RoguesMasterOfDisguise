@@ -29,11 +29,9 @@ private:
 	int _roomTrap;
 
 	RandomValue* _random;
-	std::string getEnemyInformation();
-	std::string getExitInformation();
-	std::string getVisitedInformation();
 
 	std::vector<Enemy*> _enemies;
+
 	void spawnEnemies();
 	void deleteEnemies();
 public:
@@ -61,8 +59,13 @@ public:
 	void enableBoss();
 	bool getBoss();
 
+	void forceSpawnEnemies();
+
 	std::vector<Enemy*>* getEnemies();
 
+	std::string getEnemyInformation();
+	std::string getExitInformation();
+	std::string getVisitedInformation();
 	std::string getChoiceInformation();
 	std::string getMoveChoices();
 	std::string getAttackChoices();

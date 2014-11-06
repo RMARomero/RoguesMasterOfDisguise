@@ -198,7 +198,12 @@ Room::spawnEnemies(){
 	if (chance > 25){
 		return;
 	}
-	chance = _random->getRandom(0, 99);
+	forceSpawnEnemies();
+}
+
+void
+Room::forceSpawnEnemies(){
+	int chance = _random->getRandom(0, 99);
 	int amountOfEnemies;
 	if (chance < 3){
 		amountOfEnemies = 5; //3% chance
@@ -222,6 +227,8 @@ Room::spawnEnemies(){
 	}
 
 }
+
+
 
 
 std::vector<Enemy*>* Room::getEnemies(){
