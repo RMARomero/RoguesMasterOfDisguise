@@ -10,6 +10,8 @@ SearchState::SearchState(Hero *player, LevelManager *lvlManager, Controller* con
 	_hero = player;
 	_levelManager = lvlManager;
 	_controller = controller;
+
+	_sprungTrap = false;
 }
 
 
@@ -23,6 +25,7 @@ string SearchState::processInput(string input)
 
 	Room* currentRoom = nullptr;
 
+	//this things is so wrong
 	if (input == "search")
 	{
 		int chance = _random->getRandom(0, 99);
@@ -30,19 +33,29 @@ string SearchState::processInput(string input)
 		Item* foundItem = _levelManager->GetCurrentMap()->GetCurrentRoom()->searchRoom(chance);
 		currentRoom = _levelManager->GetCurrentMap()->GetCurrentRoom();
 
-		if (foundItem == nullptr && currentRoom->isTrapTriggered())
+		//check for traps first
+		if (foundItem == nullptr && currentRoom->getRoomTrap() != nullptr)
 		{
-			if (currentRoom->isDodgedTrap())
+			if (currentRoom->getRoomTrap()->isTrapTriggered() && _sprungTrap == false)
 			{
-				result += "\nYou triggerd a hazardous trap! But you manage to dodge the damage in time!";
+				if (currentRoom->getRoomTrap()->isTrapDodged())
+				{
+					_sprungTrap = true;
+					result += "\nYou triggered a trap! ";
+					result += currentRoom->getRoomTrap()->getDescription() + ". But you manage to dodge the damage in time!";
+				}
+				else
+				{
+					_sprungTrap = true;
+					result += "\nYou triggered a trap! ";
+					_hero->doTrapDamage(currentRoom->getRoomTrap()->getTrapDamage());
+					result += currentRoom->getRoomTrap()->getDescription() + ". You took " + to_string(currentRoom->getRoomTrap()->getTrapDamage()) + "!";
+				}
 			}
 			else
-			{
-				_hero->doTrapDamage(currentRoom->getTrapDamage());
-				result += "\nYou triggerd a hazardous trap! You took " + to_string(currentRoom->getTrapDamage()) + "!";
-			}		
+				result += "\nHmmm, didnt find anything...";
 		}
-		else if (foundItem == nullptr && !currentRoom->isTrapTriggered())
+		else if (foundItem == nullptr)
 		{
 			result += "\nHmmm, didnt find anything...";
 		}
