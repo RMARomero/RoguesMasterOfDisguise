@@ -228,17 +228,17 @@ void Hero::Delete(){
 	}
 }
 
-void Hero::StartUp() {
+bool Hero::StartUp() {
 
 	if (std::ifstream("heroes/" + _name + ".txt"))
 	{
 		Load();
-	}
-	else{
-		_inventory->push_back(new Potion("Mom's soup", "Heals_you_for_a_tiny_bit", 3));//free potion
-		Save();
+		return false;
 	}
 
+	_inventory->push_back(new Potion("Mom's soup", "Heals_you_for_a_tiny_bit", 3));//free potion
+	Save();
+	return true;
 }
 
 

@@ -44,7 +44,7 @@ public:
 	void Save();
 	void Load();
 	void Delete();
-	void StartUp();
+	bool StartUp();
 	~Hero();
 };
 
