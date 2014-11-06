@@ -11,9 +11,20 @@ public:
 	std::string getDescription();
 	int getTrapDamage();
 
+	std::string underscore2space(std::string value);
+
+	bool isTrapTriggered();
+	bool isTrapDodged();
+
+	void setTrapTriggered(bool value);
+	void setTrapDodged(bool value);
+
 private:
 	std::string m_Name;
 	std::string m_Description;
 	int m_TrapDamage;
+
+	bool m_TrapTriggered;
+	bool m_TrapDodged;
 };
 

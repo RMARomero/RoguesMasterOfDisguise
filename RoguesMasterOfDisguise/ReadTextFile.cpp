@@ -22,12 +22,17 @@ ReadTextFile::ReadTextFile()
 	torchDescription = new vector<string>();
 	torchValues = new vector<string>();
 
+	trapNames = new vector<string>();
+	trapDescriptions = new vector<string>();
+	trapDamages = new vector<string>();
+
 	UniqueEnemies = new vector<Enemy*>();
 	UniqueBosses = new vector<Enemy*>();
 
 	fillRoomVectors();
 	fillEnemyVector();
 	fillItemVector();
+	fillTrapVector();
 }
 
 ReadTextFile*
@@ -69,6 +74,13 @@ ReadTextFile::~ReadTextFile()
 	torchDescription = nullptr;
 	delete torchValues;
 	torchValues = nullptr;
+
+	delete trapNames;
+	trapNames = nullptr;
+	delete trapDescriptions;
+	trapDescriptions = nullptr;
+	delete trapDamages;
+	trapDamages = nullptr;
 }
 
 void ReadTextFile::fillRoomVectors(){
@@ -195,6 +207,39 @@ void ReadTextFile::fillItemVector() {
 	}
 }
 
+void ReadTextFile::fillTrapVector()
+{
+	const string randomTrapValues("RandomTrapValues.txt");
+	string line;
+
+	ifstream input_file(randomTrapValues);
+
+	vector<string>* currentVector = trapNames;
+
+	while (getline(input_file, line))
+	{
+		if (line == "")
+		{
+		}
+		else if (line == "TrapName:")
+		{
+			currentVector = trapNames;
+		}
+		else if (line == "TrapDescription:")
+		{
+			currentVector = trapDescriptions;
+		}
+		else if (line == "TrapDamage:")
+		{
+			currentVector = trapDamages;
+		}
+		else
+		{
+			currentVector->push_back(line);
+		}
+	}
+}
+
 string ReadTextFile::getRandomRoomValue(){
 
 	int chance = _random->getRandom(0, randomRoomSizeValues->size());
@@ -263,6 +308,28 @@ Item* ReadTextFile::getRandomItem()
 		Torch* torch = new Torch(torchName, torch_Description, atoi(torchValue.c_str()));
 
 		return torch;
+	}
+	else
+		return nullptr;
+}
+
+Trap* ReadTextFile::getRandomTrap()
+{
+	int trapRandom = _random->getRandom(1, 4);
+
+	if (trapRandom == 1)
+	{
+		//do traps
+		int chance = _random->getRandom(0, trapNames->size());
+		string trapName = trapNames->at(chance);
+
+		string trapDescription = trapDescriptions->at(chance);
+
+		string trapDamage = trapDamages->at(chance);
+
+		Trap* trap = new Trap(trapName, trapDescription, atoi(trapDamage.c_str()));
+
+		return trap;
 	}
 	else
 		return nullptr;

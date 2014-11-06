@@ -3,6 +3,7 @@
 #include "RandomValue.h"
 #include "Enemy.h"
 #include "Item.h"
+#include "Trap.h"
 
 #define MAX_FIND_PROBABILITY 65
 #define MIN_FIND_PROBABILITY 15
@@ -21,6 +22,7 @@ private:
 	bool _boss = false;
 
 	Item* _item;
+	Trap* _trap;
 
 	Room* _roomNorth;
 	Room* _roomEast;
@@ -57,12 +59,10 @@ public:
 	bool getExit();
 
 	void setItemPointerToNull();
+	void setTrapPointerToNull();
 	Item* searchRoom(unsigned int chance);
 
-	int getTrapDamage();
-
-	bool isTrapTriggered();
-	bool isDodgedTrap();
+	Trap* getRoomTrap();
 
 	void enableBoss();
 	bool getBoss();
