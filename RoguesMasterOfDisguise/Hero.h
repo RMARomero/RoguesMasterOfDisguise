@@ -33,6 +33,7 @@ public:
 	std::string getStats();
 	int getCurrentAttack();
 	int getCurrentHealth();
+	void doTrapDamage(int damage);
 	void setHealth(int health);
 	void Heal(int heal);
 	bool addExperience(int experience);

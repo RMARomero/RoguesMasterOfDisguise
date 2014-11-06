@@ -91,6 +91,11 @@ int Hero::getCurrentHealth(){
 	return _currentHealth;
 }
 
+void Hero::doTrapDamage(int damage)
+{
+	_currentHealth -= damage;
+}
+
 void Hero::setHealth(int health)
 {
 	_currentHealth += health;
