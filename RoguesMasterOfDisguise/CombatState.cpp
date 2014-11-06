@@ -97,10 +97,7 @@ CombatState::processInput(string input){
 		result += Fight(false, *_levelManager->GetCurrentMap()->GetCurrentRoom()->getEnemies(), _hero);
 
 		const std::string ext("___exit___");
-		if (result.size() >= ext.size() && result.substr(result.size() - ext.size()) == "___exit___"){
-			_controller->DeleteGame();
-		}
-		else{
+		if (!(result.size() >= ext.size() && result.substr(result.size() - ext.size()) == "___exit___")){
 			result += "\n" + _levelManager->GetCurrentMap()->GetCurrentRoom()->getAttackChoices();
 		}
 	}

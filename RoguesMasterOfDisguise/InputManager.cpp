@@ -33,7 +33,9 @@ InputManager::getInput()
 		result += "\n";
 		result += "\n";
 		result += "\nPress any key to continue...\n";
-		
+
+		_controller->DeleteGame();
+
 		cout << result;
 		result = "";
 		getline(cin, input);

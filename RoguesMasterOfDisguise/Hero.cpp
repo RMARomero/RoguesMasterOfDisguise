@@ -105,7 +105,10 @@ void Hero::Heal(int heal)
 {
 	_currentHealth += heal;
 	if (_currentHealth >= _maxHealth)
-		_currentHealth = _maxHealth;
+		_currentHealth = _maxHealth; 
+	if (_currentHealth < 0){
+		_currentHealth = 0;
+	}
 }
 
 int
@@ -221,10 +224,12 @@ void Hero::Load(){
 }
 
 void Hero::Delete(){
-	string file = "heroes/" + _name + ".txt";
-	if (std::ifstream(file))
-	{
-		remove(file.c_str());
+	if (_currentHealth <= 0){
+		string file = "heroes/" + _name + ".txt";
+		if (std::ifstream(file))
+		{
+			remove(file.c_str());
+		}
 	}
 }
 
@@ -237,6 +242,7 @@ bool Hero::StartUp() {
 	}
 
 	_inventory->push_back(new Potion("Mom's soup", "Heals_you_for_a_tiny_bit", 3));//free potion
+	_inventory->push_back(new Potion("Mom's poison", "Deadly..._Do_not_drink!", -5003));//free potion
 	Save();
 	return true;
 }

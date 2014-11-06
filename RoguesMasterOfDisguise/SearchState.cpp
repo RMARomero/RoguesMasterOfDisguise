@@ -49,7 +49,7 @@ string SearchState::processInput(string input)
 					_sprungTrap = true;
 					result += "\nYou triggered a trap! ";
 					_hero->doTrapDamage(currentRoom->getRoomTrap()->getTrapDamage());
-					result += currentRoom->getRoomTrap()->getDescription() + ". You took " + to_string(currentRoom->getRoomTrap()->getTrapDamage()) + "!";
+					result += currentRoom->getRoomTrap()->getDescription() + ". You took " + to_string(currentRoom->getRoomTrap()->getTrapDamage()) + " damage!";
 				}
 			}
 			else
@@ -70,7 +70,13 @@ string SearchState::processInput(string input)
 
 		_controller->setCurrentGameState(_controller->CHOICE_STATE);
 
-		result += _levelManager->GetCurrentMap()->GetCurrentRoom()->getChoiceInformation();
+
+		if (!_hero->IsAlive()){
+			result += "\n\nYou died. You weren't able to save... them... ___exit___";
+		}
+		else{
+			result += _levelManager->GetCurrentMap()->GetCurrentRoom()->getChoiceInformation();
+		}
 	}
 
 	currentRoom = nullptr;

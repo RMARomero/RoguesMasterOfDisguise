@@ -23,8 +23,16 @@ Potion::~Potion()
 
 string Potion::Use(Hero* aHero)
 {
-	aHero->Heal(stoi(m_Ammount));
-	return "You healed for " + m_Ammount + " ammount of health points";
+	int intAmmount = stoi(m_Ammount);
+	aHero->Heal(intAmmount);
+	if (intAmmount > 0){
+		return "You healed for " + m_Ammount + " ammount of health points";
+	} else if (intAmmount == 0){
+		return "Your health remains unchanged...";
+	}
+	else{
+		return "\nYou took " + to_string(intAmmount * -1) + " damage...\n";
+	}
 }
 
 std::string Potion::getName()

@@ -318,7 +318,7 @@ Trap* Factory::getRandomTrap()
 	int findTrapChance = 25;
 	int trapRandom = _random->getRandom(1, 100);
 
-	if (trapRandom <= 25)
+	if (trapRandom <= findTrapChance)
 	{
 		//do traps
 		int chance = _random->getRandom(0, trapNames->size());

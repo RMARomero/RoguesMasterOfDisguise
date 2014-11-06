@@ -44,6 +44,8 @@ string InventoryState::processInput(string input)
 					i--; //index - 1 to get the right item
 					Item* item = _hero->getInventory()->at(i);
 					string res = item->Use(_hero);
+					result += res;
+
 					_hero->getInventory()->erase(_hero->getInventory()->begin() + i);
 
 					//memory cleanup
@@ -51,9 +53,13 @@ string InventoryState::processInput(string input)
 					item = nullptr;
 
 					_controller->setCurrentGameState(_controller->CHOICE_STATE);
+					if (!_hero->IsAlive()){
+						result += "\nYou died. You weren't able to save... them... ___exit___";
+					}
+					else{
+						result += _levelManager->GetCurrentMap()->GetCurrentRoom()->getChoiceInformation();
+					}
 
-					result += res;
-					result += _levelManager->GetCurrentMap()->GetCurrentRoom()->getChoiceInformation();
 				}
 				else
 				{
