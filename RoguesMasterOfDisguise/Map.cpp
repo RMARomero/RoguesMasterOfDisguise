@@ -28,7 +28,7 @@ Map::Map(int map_level, int max_map_level)
 	_startingRoom = new Room(_map_level);
 	matrix[x][y] = _startingRoom;
 	CreateRoom(_startingRoom, x, y, true, current_length, max_length);
-	if (map_level == 1){
+	if (map_level == 1){ // if map_level equals first room
 		_startingRoom->enableExit();
 	}
 	else{
@@ -56,8 +56,7 @@ Map::CreateRoom(Room* room, int x, int y, bool mainRoad, int current_length, int
 	if (x < 0 || x >= matrixWidth || y < 0 || y >= matrixHeight){
 		//throw Exception();
 	}
-
-
+	
 	bool pathNorthValid = false;
 	bool pathEastValid = false;
 	bool pathSouthValid = false;
@@ -294,7 +293,5 @@ Map::~Map()
 			if (matrix[j][i] != nullptr) delete matrix[j][i];
 		}
 	}
-
-
 
 }

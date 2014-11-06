@@ -74,7 +74,7 @@ CombatState::processInput(string input){
 	if (fleeAttempt){
 		if (nextRoom != nullptr){
 			int chance = RandomValue::getInstance()->getRandom(0, 100);
-			if (chance <= 66){
+			if (chance <= m_fleeChance){
 				_levelManager->GetCurrentMap()->SetCurrentRoom(nextRoom);
 				_controller->setCurrentGameState(_controller->CHOICE_STATE);
 				result = "You succesfully ran from the enemies.\n\n";

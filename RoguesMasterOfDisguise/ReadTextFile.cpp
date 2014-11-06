@@ -315,9 +315,10 @@ Item* ReadTextFile::getRandomItem()
 
 Trap* ReadTextFile::getRandomTrap()
 {
-	int trapRandom = _random->getRandom(1, 4);
+	int findTrapChance = 25;
+	int trapRandom = _random->getRandom(1, 100);
 
-	if (trapRandom == 1)
+	if (trapRandom <= 25)
 	{
 		//do traps
 		int chance = _random->getRandom(0, trapNames->size());

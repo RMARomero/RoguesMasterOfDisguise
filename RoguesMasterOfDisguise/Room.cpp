@@ -31,6 +31,7 @@ Room::Room(int room_lvl)
 	spawnEnemies();
 }
 
+
 string 
 Room::toString(){
 	string result = "Description: ";
