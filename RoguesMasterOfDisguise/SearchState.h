@@ -10,5 +10,6 @@ public:
 	std::string processInput(std::string input);
 private:
 	RandomValue* _random;
+	bool _sprungTrap;
 };
 

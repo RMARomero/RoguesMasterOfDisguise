@@ -4,6 +4,7 @@
 #include "Enemy.h"
 #include "Potion.h"
 #include "Torch.h"
+#include "Trap.h"
 
 class ReadTextFile
 {
@@ -24,6 +25,10 @@ private:
 	std::vector<std::string>* torchNames;
 	std::vector<std::string>* torchValues;
 
+	std::vector<std::string>* trapNames;
+	std::vector<std::string>* trapDescriptions;
+	std::vector<std::string>* trapDamages;
+
 	//std::vector<Potion*> randomPotionValues;
 	//std::vector<Torch*> randomTorchValues;
 	//std::vector<Item*> *randomPotionValues;
@@ -35,6 +40,7 @@ private:
 	void fillRoomVectors();
 	void fillEnemyVector();
 	void fillItemVector();
+	void fillTrapVector();
 
 public:
 	static ReadTextFile* getInstance();
@@ -42,6 +48,7 @@ public:
 	Enemy* getRandomEnemy(int level);
 	Enemy* getRandomBoss();
 	Item* getRandomItem();
+	Trap* getRandomTrap();
 	~ReadTextFile();
 };
 

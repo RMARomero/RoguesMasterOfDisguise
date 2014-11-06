@@ -14,11 +14,12 @@ Room::Room(int room_lvl)
 	_room_level = room_lvl;
 	_random = RandomValue::getInstance();
 
-	_roomTrap = _random->getRandom(1, 5); //this is wrong should be read from a file
-	_trapTriggered = false;
-	_dodgedTrap = false;
+	//_roomTrap = _random->getRandom(1, 5); //this is wrong should be read from a file
+	//_trapTriggered = false;
+	//_dodgedTrap = false;
 
 	_item = ReadTextFile::getInstance()->getRandomItem();
+	_trap = ReadTextFile::getInstance()->getRandomTrap();
 
 	_roomDescription = ReadTextFile::getInstance()->getRandomRoomValue();
 
@@ -285,18 +286,28 @@ void Room::setItemPointerToNull()
 	_item = nullptr;
 }
 
+void Room::setTrapPointerToNull()
+{
+	_trap = nullptr;
+}
+
 Item* Room::searchRoom(unsigned int chance)
 {
-	if (chance < MAX_TRAP_TRIGGER_PROBABILITY && !isTrapTriggered())
+	if (chance < MAX_TRAP_TRIGGER_PROBABILITY && _trap != nullptr)
 	{
-		int dodgeTrap = _random->getRandom(0, 2);
+		if (_trap->isTrapTriggered() == false)
+		{
+			int dodgeTrap = _random->getRandom(0, 2);
 
-		if (dodgeTrap == 1)
-			_dodgedTrap = true;
-		else
-			_dodgedTrap = false;
+			if (dodgeTrap == 1)
+				_trap->setTrapDodged(true);
+			else
+				_trap->setTrapDodged(false);
 
-		_trapTriggered = true;
+			_trap->setTrapTriggered(true);
+
+			return nullptr;
+		}
 
 		return nullptr;
 	}
@@ -308,19 +319,9 @@ Item* Room::searchRoom(unsigned int chance)
 		return nullptr;
 }
 
-int Room::getTrapDamage()
+Trap* Room::getRoomTrap()
 {
-	return _trapTriggered;
-}
-
-bool Room::isTrapTriggered()
-{
-	return _trapTriggered;
-}
-
-bool Room::isDodgedTrap()
-{
-	return _dodgedTrap;
+	return _trap;
 }
 
 string 
@@ -377,6 +378,11 @@ Room::~Room()
 		delete _item;
 
 	_item = nullptr;
+
+	if (_trap != nullptr)
+		delete _trap;
+
+	_trap = nullptr;
 }
 
 void Room::deleteEnemies(){
