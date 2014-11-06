@@ -22,6 +22,7 @@ GameLoop::GameLoop()
 std::string 
 GameLoop::getInput()
 {
+	_controller->SaveGame();
 	string input = "";
 	getline(cin, input);
 	//cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" << endl;
@@ -36,7 +37,7 @@ GameLoop::getInput()
 		result += "\n\n--------------------------\nAnd so the journey ends...\n--------------------------\n\n";
 		result += "\n";
 		result += "\n";
-		result += "\n\Press any key to continue...\n";
+		result += "\nPress any key to continue...\n";
 
 		cout << result;
 		result = "";

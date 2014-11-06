@@ -1,0 +1,11 @@
+10
+45
+12
+11
+12
+110
+110
+12
+11
+Potion Starter_Potion Heals_you_for_a_tiny_bit 3
+Torch Starter_Torch Torchy 10

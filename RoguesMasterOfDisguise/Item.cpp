@@ -20,3 +20,16 @@ std::string Item::getDescription()
 {
 	return m_Description;
 }
+
+std::string Item::toString(){
+	return "Item";
+}
+
+std::string Item::underscore2space(std::string value){
+	for (std::string::iterator it = value.begin(); it != value.end(); ++it) {
+		if (*it == '_') {
+			*it = ' ';
+		}
+	}
+	return value;
+}

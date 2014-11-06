@@ -69,3 +69,8 @@ Controller::~Controller()
 void Controller::PrintMap(){
 	_levelManager->GetCurrentMap()->PrintMap();
 }
+void Controller::SaveGame(){
+	if (_hero->getName() != ""){
+		_hero->Save();
+	}
+}

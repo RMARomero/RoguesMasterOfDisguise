@@ -24,9 +24,15 @@ InitiateState::processInput(string input){
 	string result = "";
 
 	if (_current_step == 1){
-		_hero->setName(input);
-		result = "\"So your name is '" + input + "'.\"\n\n*cough cough*\n\n\"Please, enter this dungeon and save them... before.. it is... ...\"\n\n\nI'm not sure what the old man tried to say in the end, while he passed away.\nAnyways, what should i do?\n\n{enter, leave}\n";
-		_current_step++;
+		if (input == ""){
+			result = "\"I didnt quite catch that.. Could you tell me your name again?\"\n";
+		}
+		else{
+			_hero->setName(input);
+			_hero->StartUp();
+			result = "\"So your name is '" + input + "'.\"\n\n*cough cough*\n\n\"Please, enter this dungeon and save them... before.. it is... ...\"\n\n\nI'm not sure what the old man tried to say in the end, while he passed away.\nAnyways, what should i do?\n\n{enter, leave}\n";
+			_current_step++;
+		}
 	}
 	else if (_current_step == 2){
 		if (input == "leave"){
