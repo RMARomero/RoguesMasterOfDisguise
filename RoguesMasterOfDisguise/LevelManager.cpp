@@ -8,7 +8,7 @@ LevelManager::LevelManager()
 	_currentLevel = 1;
 
 	for (int i = 1; i <= _maxLevel; i++){
-		_levels[i] = new Map(i, _maxLevel);
+		_levels[i] = new Map(i, _maxLevel, 1+i*2);
 	}
 
 }

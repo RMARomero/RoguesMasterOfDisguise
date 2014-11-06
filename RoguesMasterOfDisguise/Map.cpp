@@ -12,7 +12,7 @@ Map::Map(){
 
 }
 
-Map::Map(int map_level, int max_map_level)
+Map::Map(int map_level, int max_map_level, int max_length)
 {
 
 	_random = RandomValue::getInstance();
@@ -20,7 +20,6 @@ Map::Map(int map_level, int max_map_level)
 	_max_map_level = max_map_level;
 
 	int current_length = 0;
-	int max_length = 10;
 	newRoomChance = 40;
 
 	int x = _random->getRandom(0, (matrixWidth - 1));

@@ -23,7 +23,7 @@ private:
 	void CreateRoom(Room* room, int x, int y, bool mainRoad, int currentLength, int maxLength);
 public:
 	Map();
-	Map(int map_level, int max_map_level);
+	Map(int map_level, int max_map_level, int max_length);
 	Room* GetCurrentRoom();
 	void SetCurrentRoom(Room* room);
 	void PrintMap();
