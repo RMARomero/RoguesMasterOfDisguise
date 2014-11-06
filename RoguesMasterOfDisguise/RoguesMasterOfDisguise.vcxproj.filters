@@ -90,9 +90,6 @@
     <ClInclude Include="Controller.h">
       <Filter>Header Files\Controller</Filter>
     </ClInclude>
-    <ClInclude Include="GameLoop.h">
-      <Filter>Header Files\Controller</Filter>
-    </ClInclude>
     <ClInclude Include="Hero.h">
       <Filter>Header Files\Entity</Filter>
     </ClInclude>
@@ -129,6 +126,9 @@
     <ClInclude Include="Factory.h">
       <Filter>Header Files\Tools</Filter>
     </ClInclude>
+    <ClInclude Include="InputManager.h">
+      <Filter>Header Files\Controller</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -148,9 +148,6 @@
     </ClCompile>
     <ClCompile Include="Item.cpp">
       <Filter>Source Files\Entity\Item</Filter>
-    </ClCompile>
-    <ClCompile Include="GameLoop.cpp">
-      <Filter>Source Files\Controller</Filter>
     </ClCompile>
     <ClCompile Include="GameState.cpp">
       <Filter>Source Files\GameState</Filter>
@@ -193,6 +190,9 @@
     </ClCompile>
     <ClCompile Include="Factory.cpp">
       <Filter>Source Files\Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="InputManager.cpp">
+      <Filter>Source Files\Controller</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

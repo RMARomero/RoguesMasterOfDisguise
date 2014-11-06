@@ -1,15 +1,15 @@
 #pragma once
 #include "Controller.h"
 
-class GameLoop
+class InputManager
 {
 private:
 	bool _playing;
 	Controller* _controller;
 public:
-	GameLoop();
+	InputManager();
 	std::string getInput();
 	bool getPlayingStatus();
-	~GameLoop();
+	~InputManager();
 };
 

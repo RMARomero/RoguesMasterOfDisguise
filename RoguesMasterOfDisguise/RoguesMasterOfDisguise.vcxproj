@@ -89,7 +89,7 @@
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="InventoryState.h" />
     <ClInclude Include="Item.h" />
-    <ClInclude Include="GameLoop.h" />
+    <ClInclude Include="InputManager.h" />
     <ClInclude Include="GameState.h" />
     <ClInclude Include="Hero.h" />
     <ClInclude Include="InitiateState.h" />
@@ -112,7 +112,7 @@
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="InventoryState.cpp" />
     <ClCompile Include="Item.cpp" />
-    <ClCompile Include="GameLoop.cpp" />
+    <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="GameState.cpp" />
     <ClCompile Include="Hero.cpp" />
     <ClCompile Include="InitiateState.cpp" />

@@ -1,31 +1,26 @@
 #include "stdafx.h"
-#include "GameLoop.h"
+#include "InputManager.h"
 #include "RandomValue.h"
 #include "Factory.h"
-
-//#include <sstream>
 #include <iostream>
 
 using namespace std;
 
-
-GameLoop::GameLoop()
+InputManager::InputManager()
 {
 	_controller = new Controller();
 	_playing = true;
 	while (_playing){
 		cout << endl << getInput() << endl;
-		//_controller->PrintMap();
 	}
 }
 
 std::string 
-GameLoop::getInput()
+InputManager::getInput()
 {
 	_controller->SaveGame();
 	string input = "";
 	getline(cin, input);
-	//cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" << endl;
 	
 	string result = _controller->getInput(input);
 
@@ -44,16 +39,13 @@ GameLoop::getInput()
 		getline(cin, input);
 	}
 
-	
 	return result;
 }
 
-GameLoop::~GameLoop()
+InputManager::~InputManager()
 {
 	delete _controller;
 	delete RandomValue::getInstance();
 	delete Factory::getInstance();
-	//TODO: DELETE RANDOM SINGLETON
-	//TODO: FIX MEMLEAKS IN ROOM AND MAP
 }
 
