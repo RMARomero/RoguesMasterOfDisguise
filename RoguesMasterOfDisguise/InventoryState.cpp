@@ -22,49 +22,59 @@ string InventoryState::processInput(string input)
 
 	if (input == "inventory" && !_hero->getInventory()->empty())
 	{
-		result += "\nSelect which item you would like to use.\n";	
+		result += "\nSelect which item you would like to use.\n";
+		result += "\nOr type <back> to exit inventory.\n";
 	}
 	else if (!_hero->getInventory()->empty())
 	{
-		try
+		if (input != "back")
 		{
-			std::stringstream ss(input);
-
-			unsigned int i;
-			if ((ss >> i).fail() || !(ss >> std::ws).eof())
+			try
 			{
-				throw std::bad_cast();
+				std::stringstream ss(input);
+
+				unsigned int i;
+				if ((ss >> i).fail() || !(ss >> std::ws).eof())
+				{
+					throw std::bad_cast();
+				}
+
+				if (i > 0 && i <= _hero->getInventory()->size())
+				{
+					i--; //index - 1 to get the right item
+					Item* item = _hero->getInventory()->at(i);
+					string res = item->Use(_hero);
+					_hero->getInventory()->erase(_hero->getInventory()->begin() + i);
+
+					//memory cleanup
+					delete item;
+					item = nullptr;
+
+					_controller->setCurrentGameState(_controller->CHOICE_STATE);
+
+					result += res;
+					result += _levelManager->GetCurrentMap()->GetCurrentRoom()->getChoiceInformation();
+				}
+				else
+				{
+					_controller->setCurrentGameState(_controller->CHOICE_STATE);
+
+					result += "I don't have any items on that spot...";
+					result += _levelManager->GetCurrentMap()->GetCurrentRoom()->getChoiceInformation();
+				}
 			}
-
-			if (i > 0 && i <= _hero->getInventory()->size())
+			catch (...)
 			{
-				i--; //index - 1 to get the right item
-				Item* item = _hero->getInventory()->at(i);
-				string res = item->Use(_hero);
-				_hero->getInventory()->erase(_hero->getInventory()->begin() + i);
-
-				//memory cleanup
-				delete item;
-				item = nullptr;
-
 				_controller->setCurrentGameState(_controller->CHOICE_STATE);
 
-				result += res;
-				result += _levelManager->GetCurrentMap()->GetCurrentRoom()->getChoiceInformation();
-			}
-			else
-			{
-				_controller->setCurrentGameState(_controller->CHOICE_STATE);
-
-				result += "I don't have any items on that spot...";
+				result += "Incorrect input.";
 				result += _levelManager->GetCurrentMap()->GetCurrentRoom()->getChoiceInformation();
 			}
 		}
-		catch (...)
+		else
 		{
 			_controller->setCurrentGameState(_controller->CHOICE_STATE);
-
-			result += "Incorrect input.";
+			result += "Exiting inventory...";
 			result += _levelManager->GetCurrentMap()->GetCurrentRoom()->getChoiceInformation();
 		}
 	}

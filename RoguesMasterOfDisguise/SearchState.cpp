@@ -32,7 +32,7 @@ string SearchState::processInput(string input)
 		}
 		else
 		{
-			result += "\nBingo! I got a " + foundItem->getName() + ". " + foundItem->getDescription() + "\n";
+			result += "\nBingo! I got a " + foundItem->getName() + ". " + foundItem->getDescription() + ".";
 			_hero->addItemToInventory(foundItem);
 		}
 
