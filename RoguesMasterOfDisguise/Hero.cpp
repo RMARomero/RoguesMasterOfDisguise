@@ -235,7 +235,7 @@ void Hero::StartUp() {
 		Load();
 	}
 	else{
-		_inventory->push_back(new Potion("Starter_Potion", "Heals_you_for_a_tiny_bit", 3));//free potion
+		_inventory->push_back(new Potion("Mom's soup", "Heals_you_for_a_tiny_bit", 3));//free potion
 		Save();
 	}
 

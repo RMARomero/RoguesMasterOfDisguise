@@ -19,6 +19,7 @@ ReadTextFile::ReadTextFile()
 	potionHeals = new vector<string>();
 
 	torchNames = new vector<string>();
+	torchDescription = new vector<string>();
 	torchValues = new vector<string>();
 
 	UniqueEnemies = new vector<Enemy*>();
@@ -64,6 +65,8 @@ ReadTextFile::~ReadTextFile()
 	potionHeals = nullptr;
 	delete torchNames;
 	torchNames = nullptr;
+	delete torchDescription;
+	torchDescription = nullptr;
 	delete torchValues;
 	torchValues = nullptr;
 }
@@ -177,6 +180,10 @@ void ReadTextFile::fillItemVector() {
 		{
 			currentVector = torchNames;
 		}
+		else if (line == "TorchDescription:")
+		{
+			currentVector = torchDescription;
+		}
 		else if (line == "TorchValue:")
 		{
 			currentVector = torchValues;
@@ -245,11 +252,15 @@ Item* ReadTextFile::getRandomItem()
 	{
 		//do torch
 		int chance = _random->getRandom(0, torchNames->size());
+
 		string torchName = torchNames->at(chance);
+
+		string torch_Description = torchDescription->at(chance);
 
 		string torchValue = torchValues->at(chance);
 
-		Torch* torch = new Torch(torchName, "A lightsource", atoi(torchValue.c_str()));
+
+		Torch* torch = new Torch(torchName, torch_Description, atoi(torchValue.c_str()));
 
 		return torch;
 	}

@@ -1,5 +1,5 @@
 10
-245
+315
 12
 11
 12
@@ -9,3 +9,5 @@
 11
 Potion Starter_Potion Heals_you_for_a_tiny_bit 3
 Torch Starter_Torch Torchy 10
+Potion Small_Potion Heals_you_for_a_tiny_bit 10
+Torch Torch A_lightsource 5

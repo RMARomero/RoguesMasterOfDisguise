@@ -4,7 +4,7 @@ Medium_Potion
 Large_Potion
 
 PotionDescription:
-Heals_you_for_a_tiny_bit
+Heals_you_for_a_bit
 Heals_you_for_a_decent_ammount
 Heals_you_for_a_lot
 
@@ -16,6 +16,10 @@ PotionHeal:
 TorchName:
 Torch
 Lighter
+
+TorchDescription:
+A_lightsource
+A_small_but_effective_lightsource
 
 TorchValue:
 5

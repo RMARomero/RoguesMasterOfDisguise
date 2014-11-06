@@ -22,6 +22,7 @@ private:
 	std::vector<std::string>* potionHeals;
 
 	std::vector<std::string>* torchNames;
+	std::vector<std::string>* torchDescription;
 	std::vector<std::string>* torchValues;
 
 	//std::vector<Potion*> randomPotionValues;
