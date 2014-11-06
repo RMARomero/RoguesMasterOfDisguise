@@ -215,6 +215,14 @@ void Hero::Load(){
 	}
 }
 
+void Hero::Delete(){
+	string file = "heroes/" + _name + ".txt";
+	if (std::ifstream(file))
+	{
+		remove(file.c_str());
+	}
+}
+
 void Hero::StartUp() {
 
 	if (std::ifstream("heroes/" + _name + ".txt"))

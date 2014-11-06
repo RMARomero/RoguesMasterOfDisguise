@@ -42,6 +42,7 @@ public:
 	bool IsAlive();
 	void Save();
 	void Load();
+	void Delete();
 	void StartUp();
 	~Hero();
 };

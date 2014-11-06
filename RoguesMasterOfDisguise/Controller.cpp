@@ -74,3 +74,6 @@ void Controller::SaveGame(){
 		_hero->Save();
 	}
 }
+void Controller::DeleteGame(){
+	_hero->Delete();
+}

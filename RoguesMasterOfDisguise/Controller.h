@@ -19,6 +19,7 @@ public:
 	void setCurrentGameState(int GameState);
 	void PrintMap();
 	void SaveGame();
+	void DeleteGame();
 	GameState* getCurrentGameState();
 	~Controller();
 
