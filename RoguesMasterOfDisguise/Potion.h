@@ -11,6 +11,7 @@ public:
 	std::string Use(Hero* aHero);
 	virtual std::string getName();
 	virtual std::string getDescription();
+	virtual std::string toString();
 
 private:
 	std::string m_Ammount;

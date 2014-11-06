@@ -29,10 +29,14 @@ string Potion::Use(Hero* aHero)
 
 std::string Potion::getName()
 {
-	return m_Name;
+	return underscore2space(m_Name);
 }
 
 std::string Potion::getDescription()
 {
-	return m_Description;
+	return underscore2space(m_Description);
+}
+
+std::string Potion::toString(){
+	return "Potion " + m_Name + " " + m_Description + " " + m_Ammount;
 }

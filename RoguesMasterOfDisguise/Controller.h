@@ -18,6 +18,7 @@ public:
 	std::string getInput(std::string input);
 	void setCurrentGameState(int GameState);
 	void PrintMap();
+	void SaveGame();
 	GameState* getCurrentGameState();
 	~Controller();
 

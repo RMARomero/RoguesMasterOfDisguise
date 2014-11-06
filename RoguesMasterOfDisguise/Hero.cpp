@@ -4,6 +4,7 @@
 #include <string>
 #include <sstream>
 #include <iostream>
+#include <fstream>
 
 #include "Potion.h"
 #include "Torch.h"
@@ -13,7 +14,6 @@ using namespace std;
 Hero::Hero()
 {
 	_inventory = new vector<Item*>();
-	_inventory->push_back(new Potion("Starter Potion", "Heals you for a tiny bit", 3));
 	_equipedItem = nullptr; 
 	_name = "";
 	_level = 1;
@@ -141,6 +141,96 @@ bool Hero::addExperience(int experience){
 }
 int Hero::getLevel(){
 	return _level;
+}
+
+void Hero::Save(){
+
+	const string textfile("heroes/" + _name + ".txt");
+
+	// (1a) Tekst schrijven naar een file
+	ofstream output_file(textfile);
+	output_file << to_string(_level) + "\n";
+	output_file << to_string(_xp) + "\n";
+	output_file << to_string(_baseAttack) + "\n";
+	output_file << to_string(_baseDefense) + "\n";
+	output_file << to_string(_baseHealth) + "\n";
+	output_file << to_string(_maxHealth) + "\n";
+	output_file << to_string(_currentHealth) + "\n";
+	output_file << to_string(_attack) + "\n";
+	output_file << to_string(_defense) + "\n";
+
+	for (Item* item : *_inventory){
+		output_file << item->toString() + "\n";
+	}
+
+}
+void Hero::Load(){
+	
+	ifstream input_file("heroes/" + _name + ".txt");
+	string line;
+	
+	int counter = 0;
+	while (getline(input_file, line)) {
+		if (line == ""){
+			continue;
+		}
+		switch (counter){
+		case 0:
+			_level = atoi(line.c_str());
+			break;
+		case 1:
+			_xp = atoi(line.c_str());
+			break;
+		case 2:
+			_baseAttack = atoi(line.c_str());
+			break;
+		case 3:
+			_baseDefense = atoi(line.c_str());
+			break;
+		case 4:
+			_baseHealth = atoi(line.c_str());
+			break;
+		case 5:
+			_maxHealth = atoi(line.c_str());
+			break;
+		case 6:
+			_currentHealth = atoi(line.c_str());
+			break;
+		case 7:
+			_attack = atoi(line.c_str());
+			break;
+		case 8:
+			_defense = atoi(line.c_str());
+			break;
+		default:
+			if (line.substr(0, 6) == "Potion"){
+				istringstream iss(line);
+				vector<string> tokens{ istream_iterator<string>{iss}, istream_iterator<string>{} };
+				addItemToInventory(new Potion(tokens.at(1), tokens.at(2), atoi(tokens.at(3).c_str())));
+			}
+			else if (line.substr(0, 5) == "Torch"){
+				istringstream iss(line);
+				vector<string> tokens{ istream_iterator<string>{iss}, istream_iterator<string>{} };
+				addItemToInventory(new Torch(tokens.at(1), tokens.at(2), atoi(tokens.at(3).c_str())));
+			}
+			break;
+		}
+		counter++;
+
+	}
+}
+
+void Hero::StartUp() {
+
+	if (std::ifstream("heroes/" + _name + ".txt"))
+	{
+		Load();
+	}
+	else{
+		_inventory->push_back(new Potion("Starter_Potion", "Heals_you_for_a_tiny_bit", 3));//free potion
+		Save();
+	}
+
 }
 
 

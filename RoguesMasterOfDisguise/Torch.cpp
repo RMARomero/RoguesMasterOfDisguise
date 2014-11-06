@@ -33,12 +33,12 @@ std::string Torch::Use(Hero* aHero)
 
 std::string Torch::getName()
 {
-	return m_Name;
+	return underscore2space(m_Name);
 }
 
 std::string Torch::getDescription()
 {
-	return m_Description;
+	return underscore2space(m_Description);
 }
 
 void Torch::decreaseIllumination(unsigned int ammount)
@@ -53,4 +53,8 @@ void Torch::decreaseIllumination(unsigned int ammount)
 int Torch::getIlluminatinCount()
 {
 	return m_IlluminationCount;
+}
+
+std::string Torch::toString(){
+	return "Torch " + m_Name + " " + m_Description + " " + m_Illumination;
 }

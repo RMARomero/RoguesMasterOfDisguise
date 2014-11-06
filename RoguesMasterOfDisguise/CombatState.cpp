@@ -68,7 +68,7 @@ CombatState::processInput(string input){
 		fleeAttempt = true;
 	}
 	else{
-		result += "Invalid input." + _levelManager->GetCurrentMap()->GetCurrentRoom()->getAttackChoices();
+		result += "Invalid input.\n" + _levelManager->GetCurrentMap()->GetCurrentRoom()->getAttackChoices();
 	}
 
 	if (fleeAttempt){

@@ -41,6 +41,9 @@ public:
 	int DoDamage(int attack);
 	void Rest();
 	bool IsAlive();
+	void Save();
+	void Load();
+	void StartUp();
 	~Hero();
 };
 

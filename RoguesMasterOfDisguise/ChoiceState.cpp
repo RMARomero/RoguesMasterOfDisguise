@@ -49,13 +49,25 @@ ChoiceState::processInput(string input){
 	}
 	else if (input == "rest"){
 		if (_levelManager->GetCurrentMap()->GetCurrentRoom()->getEnemies()->size() <= 0){
-			result += "You've rested for a while and regained some health.";
-			_hero->Rest();
+
+			int chance = RandomValue::getInstance()->getRandom(0, 7);
+			if (chance <= 5){
+				result += "You've rested for a while and regained some health.";
+				_hero->Rest();
+				result += _levelManager->GetCurrentMap()->GetCurrentRoom()->getChoiceInformation();
+			}
+			else{
+				result += "You've tried to rest, but some dark presence woke you up. OH GOD, ENEMIES!";
+				_levelManager->GetCurrentMap()->GetCurrentRoom()->forceSpawnEnemies();
+				result += _levelManager->GetCurrentMap()->GetCurrentRoom()->getEnemyInformation() + "\n\n";
+				_controller->setCurrentGameState(_controller->COMBAT_STATE);
+				result += _levelManager->GetCurrentMap()->GetCurrentRoom()->getAttackChoices();
+			}
 		}
 		else{
 			result += "You shouln't rest with enemies nearby!";
+			result += _levelManager->GetCurrentMap()->GetCurrentRoom()->getChoiceInformation();
 		}
-		result += _levelManager->GetCurrentMap()->GetCurrentRoom()->getChoiceInformation();
 	}
 
 	/* Switch Room: (part one)*/
@@ -88,7 +100,7 @@ ChoiceState::processInput(string input){
 		}
 	}
 	else{
-		result += "Invalid input."+ _levelManager->GetCurrentMap()->GetCurrentRoom()->getChoiceInformation();
+		result += "Invalid input.\n"+ _levelManager->GetCurrentMap()->GetCurrentRoom()->getChoiceInformation();
 	}
 
 

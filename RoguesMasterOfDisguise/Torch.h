@@ -10,6 +10,7 @@ public:
 	std::string Use(Hero* aHero);
 	virtual std::string getName();
 	virtual std::string getDescription();
+	virtual std::string toString();
 	void decreaseIllumination(unsigned int ammount);
 	int getIlluminatinCount();
 
