@@ -6,6 +6,7 @@
 
 #define MAX_FIND_PROBABILITY 65
 #define MIN_FIND_PROBABILITY 15
+#define MAX_TRAP_TRIGGER_PROBABILITY 15
 
 class Room
 {
@@ -27,6 +28,8 @@ private:
 	Room* _roomWest;
 	std::string _roomDescription;
 	int _roomTrap;
+	bool _trapTriggered;
+	bool _dodgedTrap;
 
 	RandomValue* _random;
 
@@ -55,6 +58,11 @@ public:
 
 	void setItemPointerToNull();
 	Item* searchRoom(unsigned int chance);
+
+	int getTrapDamage();
+
+	bool isTrapTriggered();
+	bool isDodgedTrap();
 
 	void enableBoss();
 	bool getBoss();

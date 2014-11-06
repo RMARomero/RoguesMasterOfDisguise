@@ -1,0 +1,14 @@
+TrapName:
+Small_Trap
+Venom_Trap
+Hazardous_Trap
+
+TrapDescription:
+This_trap_is very_common_and_stings
+This_trap_is_covered_in_venom
+This_trap_is_very_hazardous
+
+TrapDamage:
+5
+8
+15

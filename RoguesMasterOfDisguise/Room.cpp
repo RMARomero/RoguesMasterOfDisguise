@@ -14,6 +14,10 @@ Room::Room(int room_lvl)
 	_room_level = room_lvl;
 	_random = RandomValue::getInstance();
 
+	_roomTrap = _random->getRandom(1, 5); //this is wrong should be read from a file
+	_trapTriggered = false;
+	_dodgedTrap = false;
+
 	_item = ReadTextFile::getInstance()->getRandomItem();
 
 	_roomDescription = ReadTextFile::getInstance()->getRandomRoomValue();
@@ -283,10 +287,17 @@ void Room::setItemPointerToNull()
 
 Item* Room::searchRoom(unsigned int chance)
 {
-	if (chance < 15)
+	if (chance < MAX_TRAP_TRIGGER_PROBABILITY && !isTrapTriggered())
 	{
-		//traps 
-		//what to return :S
+		int dodgeTrap = _random->getRandom(0, 2);
+
+		if (dodgeTrap == 1)
+			_dodgedTrap = true;
+		else
+			_dodgedTrap = false;
+
+		_trapTriggered = true;
+
 		return nullptr;
 	}
 	else if (chance > MIN_FIND_PROBABILITY && chance < MAX_FIND_PROBABILITY)
@@ -295,6 +306,21 @@ Item* Room::searchRoom(unsigned int chance)
 	}
 	else
 		return nullptr;
+}
+
+int Room::getTrapDamage()
+{
+	return _trapTriggered;
+}
+
+bool Room::isTrapTriggered()
+{
+	return _trapTriggered;
+}
+
+bool Room::isDodgedTrap()
+{
+	return _dodgedTrap;
 }
 
 string 
