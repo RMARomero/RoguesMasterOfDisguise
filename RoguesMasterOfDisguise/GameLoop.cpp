@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "GameLoop.h"
 #include "RandomValue.h"
-#include "ReadTextFile.h"
+#include "Factory.h"
 
 //#include <sstream>
 #include <iostream>
@@ -52,7 +52,7 @@ GameLoop::~GameLoop()
 {
 	delete _controller;
 	delete RandomValue::getInstance();
-	delete ReadTextFile::getInstance();
+	delete Factory::getInstance();
 	//TODO: DELETE RANDOM SINGLETON
 	//TODO: FIX MEMLEAKS IN ROOM AND MAP
 }

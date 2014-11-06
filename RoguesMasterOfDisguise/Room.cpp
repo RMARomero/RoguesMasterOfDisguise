@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "Room.h"
 #include "RandomValue.h"
-#include "ReadTextFile.h"
+#include "Factory.h"
 
 using namespace std;
 
@@ -18,10 +18,10 @@ Room::Room(int room_lvl)
 	//_trapTriggered = false;
 	//_dodgedTrap = false;
 
-	_item = ReadTextFile::getInstance()->getRandomItem();
-	_trap = ReadTextFile::getInstance()->getRandomTrap();
+	_item = Factory::getInstance()->getRandomItem();
+	_trap = Factory::getInstance()->getRandomTrap();
 
-	_roomDescription = ReadTextFile::getInstance()->getRandomRoomValue();
+	_roomDescription = Factory::getInstance()->getRandomRoomValue();
 
 	_roomNorth = nullptr;
 	_roomEast = nullptr;
@@ -229,7 +229,7 @@ Room::forceSpawnEnemies(){
 
 	for (int i = 0; i < amountOfEnemies; i++){
 		//_enemies.push_back(new Enemy("rat", _room_level));
-		_enemies.push_back(ReadTextFile::getInstance()->getRandomEnemy(_room_level));
+		_enemies.push_back(Factory::getInstance()->getRandomEnemy(_room_level));
 	}
 
 }
@@ -361,7 +361,7 @@ void
 Room::enableBoss(){
 	_boss = true;
 	deleteEnemies();
-	_enemies.push_back(ReadTextFile::getInstance()->getRandomBoss());
+	_enemies.push_back(Factory::getInstance()->getRandomBoss());
 }
 
 bool 

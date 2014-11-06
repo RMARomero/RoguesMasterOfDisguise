@@ -4,7 +4,7 @@
 #include <crtdbg.h>
 #include "stdafx.h"
 #include "GameLoop.h"
-#include "ReadTextFile.h"
+#include "Factory.h"
 #include <iostream>
 
 #ifdef CRTDBG_MAP_ALLOC

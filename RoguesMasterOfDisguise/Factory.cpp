@@ -1,13 +1,13 @@
 #include "stdafx.h"
 #include <fstream>
-#include "ReadTextFile.h"
+#include "Factory.h"
 #include <sstream>
 
 using namespace std;
 
-ReadTextFile* ReadTextFile::_instance = nullptr;
+Factory* Factory::_instance = nullptr;
 
-ReadTextFile::ReadTextFile()
+Factory::Factory()
 {
 	randomRoomSizeValues = new vector<string>();
 	randomRoomConditionValues = new vector<string>();
@@ -35,15 +35,15 @@ ReadTextFile::ReadTextFile()
 	fillTrapVector();
 }
 
-ReadTextFile*
-ReadTextFile::getInstance() {
+Factory*
+Factory::getInstance() {
 	if (_instance == nullptr) {
-		_instance = new ReadTextFile;
+		_instance = new Factory;
 	}
 	return _instance;
 }
 
-ReadTextFile::~ReadTextFile()
+Factory::~Factory()
 {
 	//delete _instance;
 
@@ -83,7 +83,7 @@ ReadTextFile::~ReadTextFile()
 	trapDamages = nullptr;
 }
 
-void ReadTextFile::fillRoomVectors(){
+void Factory::fillRoomVectors(){
 	const string randomRoomValues("RandomRoomValues.txt");
 
 	ifstream input_file(randomRoomValues); // stack-based file object; deze constructie opent de file voor lezen
@@ -112,7 +112,7 @@ void ReadTextFile::fillRoomVectors(){
 	}
 }
 
-void ReadTextFile::fillEnemyVector(){
+void Factory::fillEnemyVector(){
 	const string randomEnemyValues("RandomEnemyValues.txt");
 	// variabelen waarin de ingelezen waarden terecht komen
 	string line;
@@ -163,7 +163,7 @@ void ReadTextFile::fillEnemyVector(){
 
 }
 
-void ReadTextFile::fillItemVector() {
+void Factory::fillItemVector() {
 	const string randomItemValues("RandomItemValues.txt");
 	string line;
 
@@ -207,7 +207,7 @@ void ReadTextFile::fillItemVector() {
 	}
 }
 
-void ReadTextFile::fillTrapVector()
+void Factory::fillTrapVector()
 {
 	const string randomTrapValues("RandomTrapValues.txt");
 	string line;
@@ -240,7 +240,7 @@ void ReadTextFile::fillTrapVector()
 	}
 }
 
-string ReadTextFile::getRandomRoomValue(){
+string Factory::getRandomRoomValue(){
 
 	int chance = _random->getRandom(0, randomRoomSizeValues->size());
 	string roomSize = randomRoomSizeValues->at(chance);
@@ -257,7 +257,7 @@ string ReadTextFile::getRandomRoomValue(){
 	return roomSize + " " + roomCondition + " " + roomDecoration + " " + roomLightning;
 }
 
-Enemy* ReadTextFile::getRandomEnemy(int level){
+Enemy* Factory::getRandomEnemy(int level){
 	vector<Enemy*> tempEnemyList;
 
 	for (Enemy* enemy : *UniqueEnemies){
@@ -270,12 +270,12 @@ Enemy* ReadTextFile::getRandomEnemy(int level){
 	return tempEnemyList.at(chance)->Clone(level);
 }
 
-Enemy* ReadTextFile::getRandomBoss(){
+Enemy* Factory::getRandomBoss(){
 	int chance = _random->getRandom(0, UniqueBosses->size());
 	return UniqueBosses->at(chance)->Clone(11); /* 11, since they should be stronger then lvl 10 mobs */
 }
 
-Item* ReadTextFile::getRandomItem()
+Item* Factory::getRandomItem()
 {
 	int itemRandom = _random->getRandom(0, 3);
 
@@ -313,7 +313,7 @@ Item* ReadTextFile::getRandomItem()
 		return nullptr;
 }
 
-Trap* ReadTextFile::getRandomTrap()
+Trap* Factory::getRandomTrap()
 {
 	int findTrapChance = 25;
 	int trapRandom = _random->getRandom(1, 100);

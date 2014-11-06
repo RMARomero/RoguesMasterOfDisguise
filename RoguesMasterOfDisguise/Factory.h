@@ -6,11 +6,11 @@
 #include "Torch.h"
 #include "Trap.h"
 
-class ReadTextFile
+class Factory
 {
 private:
-	ReadTextFile();
-	static ReadTextFile* _instance;
+	Factory();
+	static Factory* _instance;
 
 	RandomValue* _random;
 	std::vector<std::string>* randomRoomSizeValues;
@@ -29,12 +29,7 @@ private:
 	std::vector<std::string>* trapNames;
 	std::vector<std::string>* trapDescriptions;
 	std::vector<std::string>* trapDamages;
-
-	//std::vector<Potion*> randomPotionValues;
-	//std::vector<Torch*> randomTorchValues;
-	//std::vector<Item*> *randomPotionValues;
-	//std::vector<Item*> *randomTorchValues;
-
+	
 	std::vector<Enemy*>* UniqueEnemies;
 	std::vector<Enemy*>* UniqueBosses;
 
@@ -44,12 +39,12 @@ private:
 	void fillTrapVector();
 
 public:
-	static ReadTextFile* getInstance();
+	static Factory* getInstance();
 	std::string getRandomRoomValue();
 	Enemy* getRandomEnemy(int level);
 	Enemy* getRandomBoss();
 	Item* getRandomItem();
 	Trap* getRandomTrap();
-	~ReadTextFile();
+	~Factory();
 };
 

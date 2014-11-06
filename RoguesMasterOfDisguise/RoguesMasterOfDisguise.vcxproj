@@ -97,7 +97,7 @@
     <ClInclude Include="Map.h" />
     <ClInclude Include="Potion.h" />
     <ClInclude Include="RandomValue.h" />
-    <ClInclude Include="ReadTextFile.h" />
+    <ClInclude Include="Factory.h" />
     <ClInclude Include="Room.h" />
     <ClInclude Include="SearchState.h" />
     <ClInclude Include="stdafx.h" />
@@ -120,7 +120,7 @@
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="Potion.cpp" />
     <ClCompile Include="RandomValue.cpp" />
-    <ClCompile Include="ReadTextFile.cpp" />
+    <ClCompile Include="Factory.cpp" />
     <ClCompile Include="RoguesMasterOfDisguise.cpp" />
     <ClCompile Include="Room.cpp" />
     <ClCompile Include="SearchState.cpp" />
