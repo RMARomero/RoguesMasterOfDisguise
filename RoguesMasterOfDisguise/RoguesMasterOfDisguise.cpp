@@ -23,7 +23,6 @@ using namespace std;
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-
 	GameLoop* game = new GameLoop();
 	delete game;
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);

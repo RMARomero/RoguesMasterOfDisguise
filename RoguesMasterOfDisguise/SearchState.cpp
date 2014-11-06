@@ -63,9 +63,10 @@ string SearchState::processInput(string input)
 		{
 			result += "\nBingo! I got a " + foundItem->getName() + ". " + foundItem->getDescription() + ".";
 			_hero->addItemToInventory(foundItem);
+			_levelManager->GetCurrentMap()->GetCurrentRoom()->setItemPointerToNull();
 		}
 
-		_levelManager->GetCurrentMap()->GetCurrentRoom()->setItemPointerToNull();
+		foundItem = nullptr;
 
 		_controller->setCurrentGameState(_controller->CHOICE_STATE);
 

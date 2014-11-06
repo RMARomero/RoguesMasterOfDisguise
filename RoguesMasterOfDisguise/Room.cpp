@@ -374,14 +374,10 @@ Room::~Room()
 	deleteEnemies();
 
 	//delete item if any
-	if (_item != nullptr)
-		delete _item;
-
+	delete _item;
 	_item = nullptr;
 
-	if (_trap != nullptr)
-		delete _trap;
-
+	delete _trap;
 	_trap = nullptr;
 }
 
