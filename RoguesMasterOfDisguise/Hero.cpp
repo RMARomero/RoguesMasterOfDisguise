@@ -242,7 +242,6 @@ bool Hero::StartUp() {
 	}
 
 	_inventory->push_back(new Potion("Mom's soup", "Heals_you_for_a_tiny_bit", 3));//free potion
-	_inventory->push_back(new Potion("Mom's poison", "Deadly..._Do_not_drink!", -5003));//free potion
 	Save();
 	return true;
 }
